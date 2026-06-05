@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Davide Valentini — Brand & Communication Strategist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --ink-light: #5a5a54;
+    --ink-faint: #9a9a90;
+    --paper: #f5f3ee;
+    --paper-warm: #ede9e0;
+    --accent: #c84b2f;
+    --accent-dark: #9e3520;
+    --white: #ffffff;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --max: 1100px;
+    --gutter: clamp(1.5rem, 5vw, 4rem);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem var(--gutter);
+    background: var(--paper);
+    border-bottom: 1px solid rgba(26,26,24,0.1);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HAMBURGER ── */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 101;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    padding: 8rem var(--gutter) 5rem;
+    max-width: var(--max);
+    margin: 0 auto;
+    gap: 4rem;
+  }
+
+  .hero-left {
+    padding-bottom: 1rem;
+  }
+
+  .hero-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-tagline {
+    font-size: 1.15rem;
+    color: var(--ink-light);
+    line-height: 1.65;
+    max-width: 38ch;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-tagline strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: var(--sans);
+    transition: background 0.2s;
+    font-weight: 400;
+  }
+
+  .btn-primary:hover { background: var(--accent); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: var(--sans);
+    border: 1px solid rgba(26,26,24,0.3);
+    transition: border-color 0.2s, color 0.2s;
+    font-weight: 400;
+  }
+
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    align-self: center;
+  }
+
+  .differenziale {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2.5rem;
+  }
+
+  .differenziale-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,243,238,0.5);
+    margin-bottom: 1.25rem;
+  }
+
+  .differenziale-text {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    line-height: 1.35;
+    color: var(--paper);
+  }
+
+  .differenziale-sub {
+    margin-top: 1rem;
+    font-size: 0.88rem;
+    color: rgba(245,243,238,0.6);
+    line-height: 1.6;
+  }
+
+  .skills-strip {
+    background: var(--paper-warm);
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    border: 1px solid rgba(26,26,24,0.08);
+  }
+
+  .skill-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+
+  .skill-tag::after {
+    content: '·';
+    margin-left: 1rem;
+    color: var(--ink-faint);
+  }
+
+  .skill-tag:last-child::after { display: none; }
+
+  /* ── SECTION COMMON ── */
+  section {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 6rem var(--gutter);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid rgba(26,26,24,0.12);
+    padding-bottom: 1.5rem;
+  }
+
+  .section-number {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  /* ── APPROCCIO ── */
+  .approccio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(26,26,24,0.1);
+  }
+
+  .approccio-item {
+    background: var(--paper);
+    padding: 2.5rem 2rem;
+  }
+
+  .approccio-number {
+    font-size: 3rem;
+    font-family: var(--serif);
+    color: var(--paper-warm);
+    line-height: 1;
+    margin-bottom: 1rem;
+    user-select: none;
+  }
+
+  .approccio-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  .approccio-text {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+
+  .approccio-callout {
+    margin-top: 3rem;
+    padding: 2rem 2.5rem;
+    border-left: 3px solid var(--accent);
+    background: var(--white);
+  }
+
+  .approccio-callout p {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  /* ── PROGETTI ── */
+  .progetti-grid {
+    display: grid;
+    gap: 1px;
+    background: rgba(26,26,24,0.1);
+  }
+
+  .project-card {
+    background: var(--paper);
+    display: grid;
+    grid-template-columns: 1fr 2fr auto;
+    align-items: start;
+    padding: 2.5rem 2rem;
+    gap: 2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-card:hover { background: var(--white); }
+
+  .project-card:hover .project-arrow { transform: translate(4px, -4px); }
+
+  .project-meta { min-width: 0; }
+
+  .project-index {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-date {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    margin-top: 0.5rem;
+  }
+
+  .project-content { min-width: 0; }
+
+  .project-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .project-hook {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid rgba(26,26,24,0.2);
+    color: var(--ink-light);
+  }
+
+  .tag.accent {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .project-arrow {
+    font-size: 1.5rem;
+    color: var(--ink-faint);
+    transition: transform 0.2s;
+    align-self: center;
+    flex-shrink: 0;
+  }
+
+  .project-outcome {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--paper-warm);
+    font-size: 0.82rem;
+    color: var(--ink-light);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .project-outcome strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ── CHI LAVORO CON TE ── */
+  .target-section {
+    background: var(--ink);
+    padding: 6rem var(--gutter);
+  }
+
+  .target-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .target-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: var(--paper);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .target-title em { color: var(--accent); font-style: italic; }
+
+  .target-desc {
+    font-size: 0.95rem;
+    color: rgba(245,243,238,0.6);
+    line-height: 1.75;
+  }
+
+  .target-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .target-list li {
+    padding: 1.25rem 1.5rem;
+    background: rgba(245,243,238,0.04);
+    font-size: 0.9rem;
+    color: rgba(245,243,238,0.75);
+    line-height: 1.6;
+    border-left: 2px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .target-list li:hover {
+    border-left-color: var(--accent);
+    background: rgba(245,243,238,0.07);
+  }
+
+  .target-list li strong {
+    display: block;
+    color: var(--paper);
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+    font-size: 0.95rem;
+  }
+
+  /* ── SU DI ME ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-pro p {
+    color: var(--ink-light);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .about-pro p:first-child {
+    font-size: 1.1rem;
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  .about-personal {
+    background: var(--white);
+    padding: 2.5rem;
+    border: 1px solid rgba(26,26,24,0.08);
+  }
+
+  .about-personal-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-personal p {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .about-personal p:last-child { margin-bottom: 0; }
+
+  .cv-strip {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(26,26,24,0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .cv-group-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 1.25rem;
+  }
+
+  .cv-item {
+    margin-bottom: 1.25rem;
+  }
+
+  .cv-item-year {
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.2rem;
+  }
+
+  .cv-item-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .cv-item-sub {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    margin-top: 0.1rem;
+  }
+
+  /* ── CONTATTO ── */
+  .contact-section {
+    background: var(--accent);
+    padding: 6rem var(--gutter);
+    text-align: center;
+  }
+
+  .contact-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .contact-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2.5rem;
+    line-height: 1.65;
+  }
+
+  .contact-email {
+    display: inline-block;
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--white);
+    text-decoration: none;
+    border-bottom: 2px solid rgba(255,255,255,0.4);
+    padding-bottom: 0.25rem;
+    transition: border-color 0.2s;
+  }
+
+  .contact-email:hover { border-color: var(--white); }
+
+  .contact-note {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(26,26,24,0.1);
+    max-width: var(--max);
+    margin: 0 auto;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    color: var(--ink-faint);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── FADE IN ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--paper);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      z-index: 99;
+    }
+
+    .nav-links.open { display: flex; }
+
+    .nav-links a {
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .hero { grid-template-columns: 1fr; padding-top: 6rem; }
+    .hero-right { margin-top: 2rem; }
+    .approccio-grid { grid-template-columns: 1fr; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-arrow { display: none; }
+    .target-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .cv-strip { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Davide Valentini</a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#approccio">Approccio</a></li>
+    <li><a href="#progetti">Progetti</a></li>
+    <li><a href="#about">Chi sono</a></li>
+    <li><a href="#contatto">Contatto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left fade-in">
+    <p class="hero-label">Brand &amp; Communication Strategist</p>
+    <h1 class="hero-title">
+      Costruisco identità<br>
+      che <em>fanno la differenza</em><br>
+      sul mercato.
+    </h1>
+    <p class="hero-tagline">
+      Aiuto <strong>piccole aziende B2B</strong> a costruire un'identità chiara
+      e una presenza digitale che funziona davvero.
+      Dalla strategia all'esecuzione: <strong>una testa, non cinque fornitori.</strong>
+    </p>
+    <div class="hero-cta">
+      <a href="#progetti" class="btn-primary">Guarda i progetti</a>
+      <a href="#contatto" class="btn-secondary">Parliamoci</a>
+    </div>
+  </div>
+
+  <div class="hero-right fade-in" style="transition-delay: 0.15s">
+    <div class="differenziale">
+      <p class="differenziale-label">Il differenziale</p>
+      <p class="differenziale-text">
+        "Visione sistemica: dall'identità alle ads, tutto coerente."
+      </p>
+      <p class="differenziale-sub">
+        Molte PMI si rivolgono a un'agenzia per il logo, un freelance per i social,
+        qualcun altro per il sito. Il risultato è frammentato. Io lavoro su tutto
+        il sistema — con un'unica visione strategica.
+      </p>
+    </div>
+    <div class="skills-strip">
+      <span class="skill-tag">Brand strategy</span>
+      <span class="skill-tag">Positioning</span>
+      <span class="skill-tag">Visual identity</span>
+      <span class="skill-tag">Digital strategy</span>
+      <span class="skill-tag">LinkedIn &amp; Meta ads</span>
+      <span class="skill-tag">Copywriting</span>
+      <span class="skill-tag">Website direction</span>
+    </div>
+  </div>
+</div>
+
+<!-- APPROCCIO -->
+<section id="approccio">
+  <div class="section-header fade-in">
+    <span class="section-number">01 — Approccio</span>
+    <h2 class="section-title">Come lavoro</h2>
+  </div>
+  <div class="approccio-grid fade-in">
+    <div class="approccio-item">
+      <div class="approccio-number">01</div>
+      <h3 class="approccio-title">Analisi e strategia</h3>
+      <p class="approccio-text">
+        Prima di qualsiasi output visivo o testuale, capisco il business.
+        Chi sei, chi sono i tuoi clienti, come ti posizioni rispetto ai competitor,
+        cosa ti rende diverso. Il risultato è un documento strategico che orienta
+        tutto ciò che segue.
+      </p>
+    </div>
+    <div class="approccio-item">
+      <div class="approccio-number">02</div>
+      <h3 class="approccio-title">Identità e messaggi</h3>
+      <p class="approccio-text">
+        Dal posizionamento derivano valori, tono di voce, messaggi chiave e
+        identità visiva. Non estetica fine a sé stessa: ogni scelta visiva
+        e verbale è funzionale al differenziale competitivo che vogliamo
+        comunicare.
+      </p>
+    </div>
+    <div class="approccio-item">
+      <div class="approccio-number">03</div>
+      <h3 class="approccio-title">Esecuzione coerente</h3>
+      <p class="approccio-text">
+        Sito, ads, contenuti, campagne. Tutto costruito sulla strategia
+        definita insieme. Il risultato è una presenza digitale coerente
+        su tutti i touchpoint — non un insieme di pezzi disconnessi.
+      </p>
+    </div>
+  </div>
+  <div class="approccio-callout fade-in">
+    <p>
+      "La strategia funziona solo se c'è allineamento tra chi la progetta
+      e chi la esegue. Per questo preferisco seguire l'intero processo,
+      dalla ricerca alla messa online."
+    </p>
+  </div>
+</section>
+
+<!-- PROGETTI -->
+<section id="progetti">
+  <div class="section-header fade-in">
+    <span class="section-number">02 — Progetti</span>
+    <h2 class="section-title">Case study selezionati</h2>
+  </div>
+
+  <div class="progetti-grid">
+
+    <!-- PROGETTO 1: OnTheCloud -->
+    <div class="project-card fade-in">
+      <div class="project-meta">
+        <p class="project-index">01</p>
+        <p class="project-date">2024–2025</p>
+      </div>
+      <div class="project-content">
+        <h3 class="project-title">OnTheCloud</h3>
+        <p class="project-hook">
+          Brand identity da zero, strategia di marketing digitale e campagne ads
+          per una PMI ICT B2B. Unico responsabile della comunicazione per 4 mesi,
+          senza figure senior di riferimento.
+        </p>
+        <div class="project-tags">
+          <span class="tag accent">ICT B2B</span>
+          <span class="tag">Brand identity</span>
+          <span class="tag">Digital strategy</span>
+          <span class="tag">LinkedIn &amp; Meta ads</span>
+          <span class="tag">Website direction</span>
+        </div>
+        <div class="project-outcome">
+          <strong>Sistema completo:</strong>&nbsp;da nessuna identità a brand operativo su tutti i canali digitali
+        </div>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+
+    <!-- PROGETTO 2: Campagna Europee -->
+    <div class="project-card fade-in">
+      <div class="project-meta">
+        <p class="project-index">02</p>
+        <p class="project-date">Giugno 2024</p>
+      </div>
+      <div class="project-content">
+        <h3 class="project-title">Campagna Europee 2024</h3>
+        <p class="project-hook">
+          Strategia di comunicazione completa per una candidata alle Europee.
+          Posizionamento, messaggi differenziati per cluster, visual identity,
+          campagne micro-targetizzate su Meta. Meno di un mese, budget contenuto.
+        </p>
+        <div class="project-tags">
+          <span class="tag accent">Political branding</span>
+          <span class="tag">Strategic design</span>
+          <span class="tag">Digital strategy</span>
+          <span class="tag">Meta ads</span>
+          <span class="tag">Visual branding</span>
+        </div>
+        <div class="project-outcome">
+          <strong>1.822 preferenze</strong>&nbsp;— risultato superiore alle aspettative, con budget limitato
+        </div>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+
+    <!-- PROGETTO 3: Milano Abitare -->
+    <div class="project-card fade-in">
+      <div class="project-meta">
+        <p class="project-index">03</p>
+        <p class="project-date">Giugno 2024</p>
+      </div>
+      <div class="project-content">
+        <h3 class="project-title">Milano Abitare</h3>
+        <p class="project-hook">
+          Digital strategy per un'agenzia immobiliare milanese. Target segmentato
+          in due cluster con personas distinte. Concept di comunicazione, media mix
+          e piano editoriale su più piattaforme.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Digital strategy</span>
+          <span class="tag">Target research</span>
+          <span class="tag">Brand storytelling</span>
+          <span class="tag">Content strategy</span>
+        </div>
+        <div class="project-outcome">
+          <strong>Deliverable:</strong>&nbsp;documento strategico + piano editoriale per 2 cluster su 3 piattaforme
+        </div>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+
+    <!-- PROGETTO 4: Sulla Soglia -->
+    <div class="project-card fade-in">
+      <div class="project-meta">
+        <p class="project-index">04</p>
+        <p class="project-date">Dicembre 2023</p>
+      </div>
+      <div class="project-content">
+        <h3 class="project-title">Sulla Soglia</h3>
+        <p class="project-hook">
+          Sistema narrativo transmediale per avvicinare i giovani alla realtà
+          del carcere di San Vittore attraverso Instagram e YouTube.
+          Identità visiva, user journey e storytelling su canali multipli.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Transmedia storytelling</span>
+          <span class="tag">Strategic design</span>
+          <span class="tag">Visual identity</span>
+          <span class="tag">Digital strategy</span>
+        </div>
+      </div>
+      <div class="project-arrow">↗</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHI LAVORO CON TE -->
+<div class="target-section">
+  <div class="target-inner">
+    <div class="fade-in">
+      <h2 class="target-title">
+        Con chi<br>
+        lavoro<br>
+        <em>meglio</em>
+      </h2>
+      <p class="target-desc">
+        Non lavoro per tutti. Funziono meglio con chi ha un prodotto
+        o servizio di qualità e si trova a gestire la comunicazione
+        senza una struttura dedicata — o con una struttura che non
+        sta portando i risultati attesi.
+      </p>
+    </div>
+    <ul class="target-list fade-in">
+      <li>
+        <strong>PMI B2B italiane, 5–30 dipendenti</strong>
+        Settori ICT, professional services, manifattura di nicchia.
+        Aziende con un'offerta solida ma una presenza digitale che non la rispecchia.
+      </li>
+      <li>
+        <strong>Fondatori e CEO che gestiscono la comunicazione in prima persona</strong>
+        Sanno cosa vogliono dire, ma non come dirlo in modo che arrivi.
+        O non hanno tempo per farlo bene.
+      </li>
+      <li>
+        <strong>Chi vuole una strategia prima di investire in ads</strong>
+        Promuovere qualcosa che non è posizionato è bruciare budget.
+        Il brand audit è il punto di partenza giusto.
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- SU DI ME -->
+<section id="about">
+  <div class="section-header fade-in">
+    <span class="section-number">03 — Chi sono</span>
+    <h2 class="section-title">Davide Valentini</h2>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-pro fade-in">
+      <p>
+        Sono un designer della comunicazione con una formazione al Politecnico di Milano
+        e un'inclinazione sempre più marcata verso la strategia. Mi occupo di quello
+        che viene prima: prima del post su Instagram, prima del copy dell'ad,
+        prima del sito.
+      </p>
+      <p>
+        A chi ci rivolgiamo? Di cosa hanno bisogno? Come li raggiungiamo?
+        Con quale linguaggio? Rispondere bene a queste domande è la differenza
+        tra comunicazione che funziona e rumore.
+      </p>
+      <p>
+        Ho lavorato su progetti di brand strategy, digital strategy, political
+        communication e campagne ads — sempre con la stessa logica: capire il
+        mercato, definire il differenziale, costruire una presenza coerente.
+      </p>
+
+      <div class="cv-strip">
+        <div>
+          <p class="cv-group-title">Esperienze</p>
+          <div class="cv-item">
+            <p class="cv-item-year">2024–2025</p>
+            <p class="cv-item-title">Brand &amp; Communication Strategist</p>
+            <p class="cv-item-sub">OnTheCloud Srl — stage</p>
+          </div>
+          <div class="cv-item">
+            <p class="cv-item-year">2023–2025</p>
+            <p class="cv-item-title">Consulente strategia di comunicazione politica</p>
+            <p class="cv-item-sub">Attivismo / Volontariato</p>
+          </div>
+          <div class="cv-item">
+            <p class="cv-item-year">2022–2024</p>
+            <p class="cv-item-title">Graphic Designer</p>
+            <p class="cv-item-sub">Freelance</p>
+          </div>
+        </div>
+        <div>
+          <p class="cv-group-title">Formazione</p>
+          <div class="cv-item">
+            <p class="cv-item-year">2022–2025</p>
+            <p class="cv-item-title">Laurea Magistrale in Design della Comunicazione</p>
+            <p class="cv-item-sub">Politecnico di Milano</p>
+          </div>
+          <div class="cv-item">
+            <p class="cv-item-year">2019–2022</p>
+            <p class="cv-item-title">Laurea Triennale in Design della Comunicazione</p>
+            <p class="cv-item-sub">Politecnico di Milano</p>
+          </div>
+          <div class="cv-item">
+            <p class="cv-item-year">2024</p>
+            <p class="cv-item-title">C2 Proficient — Cambridge University Press</p>
+            <p class="cv-item-sub">+ Atlas Network Marketing &amp; Communications Cert.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-personal fade-in" style="transition-delay:0.1s">
+      <p class="about-personal-label">Oltre il lavoro</p>
+      <p>
+        Sono una persona estremamente curiosa — del tipo che entra su Wikipedia
+        per cercare una cosa e riemerge un'ora dopo. Amo viaggiare, rigorosamente
+        in posti nuovi: il conteggio dei luoghi visitati è una metrica che prendo
+        sul serio.
+      </p>
+      <p>
+        Meglio non iniziare una conversazione di politica con me. Ma se l'interesse
+        è comune, possiamo parlare di economia politica, storia del Novecento
+        e ideologie per ore. Tifoso del Milan — cresciuto con Kakà e Sheva —
+        e appassionato di calcio e fantacalcio (sono bravo, sono solo iellato).
+      </p>
+      <p>
+        Ascolto quotidianamente La Zanzara e il primo di ogni mese religiosamente
+        Indagini di Stefano Nazzi. La mia playlist si chiama "various" perché
+        c'è davvero di tutto — ma soprattutto Fabri Fibra, che non è bollito.
+      </p>
+      <p style="margin-top:1.25rem; font-size:0.82rem; color:#9a9a90; font-style:italic;">
+        Forte pensiero critico e analitico · buona leadership nel teamwork ·
+        gestione delle priorità · difetto principale: ansia da palco, ci sto lavorando.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTO -->
+<div class="contact-section" id="contatto">
+  <div class="contact-inner fade-in">
+    <h2 class="contact-title">Hai già in mente qualcosa?</h2>
+    <p class="contact-sub">
+      Iniziamo con una call di 30 minuti. Niente pitch, niente preventivi alla cieca:
+      capisco il tuo problema, ti dico cosa posso fare.
+    </p>
+    <a href="mailto:hi@davidevalentini.com" class="contact-email">hi@davidevalentini.com</a>
+    <p class="contact-note">Milano · Disponibile anche da remoto</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Davide Valentini</span>
+  <div class="footer-links">
+    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    <a href="#" onclick="alert('CV disponibile su richiesta — scrivi a hi@davidevalentini.com')">CV</a>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  toggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Close menu on link click
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Stagger children in grids
+  document.querySelectorAll('.approccio-grid .approccio-item, .progetti-grid .project-card, .target-list li').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 0.07}s`;
+    el.classList.add('fade-in');
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
