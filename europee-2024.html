@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elezioni Europee 2024 — Davide Valentini</title>
+<meta name="description" content="Strategia di comunicazione completa per una candidata alle Elezioni Europee 2024: posizionamento, immagine coordinata e campagne micro-targetizzate su Meta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #FFFFFF;
+    --bg: #F5F7F7;
+    --light: #E5EAE8;
+    --accent-mid: #009999;
+    --accent: #017878;
+    --dark: #112B2B;
+    --darkest: #001111;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans-head: 'Inter Tight', system-ui, sans-serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --max: 1120px;
+    --gutter: clamp(1.5rem, 5vw, 4rem);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--darkest);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV (shared with index) ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem var(--gutter);
+    background: var(--bg);
+    border-bottom: 1px solid var(--light);
+  }
+  .nav-logo {
+    font-family: var(--sans-head);
+    font-size: 1.1rem; font-weight: 400;
+    color: var(--darkest); text-decoration: none; letter-spacing: 0.02em;
+  }
+  .nav-logo .logo-bold { font-weight: 700; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--sans-head); font-size: 0.8rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--dark); text-decoration: none;
+    transition: color 0.4s; font-weight: 400;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px; z-index: 101;
+  }
+  .nav-toggle span {
+    display: block; width: 24px; height: 1.5px; background: var(--darkest);
+    transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── FULL-BLEED + CONTAINERS ── */
+  .bleed { width: 100%; }
+  .wrap {
+    max-width: var(--max); margin: 0 auto;
+    padding: clamp(3.5rem, 7vw, 6rem) var(--gutter);
+  }
+
+  /* ── COVER ── */
+  .hero-banner { background: var(--bg); padding-top: 66px; }
+  .hero-banner img { width: 100%; height: auto; display: block; }
+
+  .cover-intro {
+    max-width: var(--max); margin: 0 auto;
+    padding: clamp(2.5rem, 5vw, 4rem) var(--gutter) clamp(1rem, 2vw, 2rem);
+  }
+  .back-link {
+    font-family: var(--sans-head); font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--dark); text-decoration: none;
+    font-weight: 500; display: inline-flex; align-items: center; gap: 0.5rem;
+    margin-bottom: 1.75rem; transition: color 0.3s, gap 0.3s;
+  }
+  .back-link:hover { color: var(--accent); gap: 0.85rem; }
+
+  .cover-label {
+    font-family: var(--serif); font-size: 0.85rem; letter-spacing: 0.03em;
+    color: var(--accent); margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 0.75rem; font-weight: 300;
+  }
+  .cover-label::before {
+    content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent);
+  }
+  .cover-title {
+    font-family: var(--sans-head); font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1.02; letter-spacing: -0.02em; color: var(--darkest); margin-bottom:1.75rem; font-weight: 900;
+  }
+  .cover-title em { font-style: italic; color: var(--accent); }
+
+  .cover-tags {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem;
+    margin-bottom: 2rem;
+  }
+  .cover-tags span {
+    font-family: var(--serif); font-size: 1rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--dark); font-style: italic;
+  }
+  .cover-tags i { color: var(--accent); font-style: normal; font-size: 0.6rem; }
+
+  .cover-meta {
+    display: grid; grid-template-columns: repeat(3, auto); gap: 2.5rem;
+    border-top: 1px solid var(--light); padding-top: 1.5rem; margin-top: 0.5rem;
+  }
+  .cover-meta dt {
+    font-family: var(--sans-head); font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 0.4rem;
+  }
+  .cover-meta dd {
+    font-size: 0.85rem; color: var(--dark); font-weight: 400; line-height: 1.45;
+  }
+
+  /* ── SECTION MARKER (00. SFIDA) ── */
+  .marker { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem); }
+  .marker .n {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(1.8rem, 3vw, 2.7rem); color: var(--darkest); line-height: 1; flex-shrink: 0;
+  }
+  .marker .t {
+    font-family: var(--sans-head); font-weight: 900; text-transform: uppercase;
+    letter-spacing: -0.02em; font-size: clamp(2.3rem, 7vw, 5rem); line-height: 0.92; color: var(--light);
+  }
+
+  /* ── BODY COPY ── */
+  .body { max-width: 48ch; }
+  .body p { font-size: clamp(0.95rem, 1.05vw, 1.05rem); line-height: 1.85; color: var(--dark); font-weight: 300; }
+  .body p + p { margin-top: 1.1rem; }
+  .body .h { color: var(--accent); font-style: italic; font-weight: 400; }
+  .body b { color: var(--darkest); font-weight: 500; font-style: normal; }
+
+  /* offset two-column copy (Sfida, Insight) */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  .cols .col-b { margin-top: clamp(2rem, 7vw, 5.5rem); }
+  .cols .col-b p {
+    font-size: clamp(0.82rem, 0.9vw, 0.88rem);
+    line-height: 1.6;
+    font-weight: 500;
+    color: var(--dark);
+  }
+
+  /* ── FIGURES ── */
+  .fig { margin-top: clamp(2.5rem, 5vw, 4rem); }
+  .fig img { width: 100%; height: auto; display: block; }
+  .fig + .fig { margin-top: clamp(1.25rem, 2.5vw, 2rem); }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); margin-top: clamp(2.5rem, 5vw, 4rem); }
+  .cards img { width: 100%; height: auto; display: block; }
+
+  /* ── MEDIA CONTAINERS ── */
+  .band-dark .band-inner {
+    max-width: var(--max); margin: 0 auto;
+    padding: clamp(2.5rem, 5vw, 4.5rem) var(--gutter);
+  }
+  .band-dark img { width: 100%; height: auto; display: block; }
+
+  .full-bleed img { width: 100%; height: auto; display: block; }
+
+  .wrap-media {
+    max-width: var(--max); margin: 0 auto;
+    padding: clamp(2.5rem, 5vw, 4.5rem) var(--gutter);
+  }
+  .wrap-media img { width: 100%; height: auto; display: block; }
+
+  .phones-overlap {
+    margin-top: clamp(-8rem, -6vw, -3rem);
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── CLOSING CTA ── */
+  .closing { margin: 0 auto; padding: clamp(4rem, 8vw, 7rem) var(--gutter); text-align: center; background: var(--accent-mid)}
+  .closing p {
+    font-family: var(--serif); font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+    line-height: 1.35; color: var(--white); max-width: 22ch; margin: 0 auto 2.25rem;
+  }
+  .closing p em { font-style: italic; color: var(--darkest); }
+  .cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--dark); color: var(--white); text-decoration: none;
+    padding: 0.85rem 2rem; font-family: var(--sans-head); font-size: 0.78rem;
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); color:  var(--light)}
+
+  .btn-secondary {
+    background: transparent; color: var(--dark); text-decoration: none;
+    padding: 0.85rem 2rem; font-family: var(--sans-head); font-size: 0.78rem;
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+    border: 1.5px solid var(--dark); transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── FOOTER (shared with index) ── */
+  footer {
+    padding: 2rem var(--gutter); display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--light); max-width: var(--max); margin: 0 auto;
+    font-family: var(--sans-head); font-size: 0.75rem; color: rgba(17,43,43,0.35); font-weight: 300;
+  }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: rgba(17,43,43,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── FADE IN ── */
+  .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--bg); flex-direction: column; align-items: center; justify-content: center;
+      gap: 2.5rem; z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 1.1rem; }
+
+    .cols { grid-template-columns: 1fr; gap: 1.5rem; }
+    .cols .col-b { margin-top: 0; }
+    .cards { grid-template-columns: 1fr; }
+    .cover-meta { grid-template-columns: 1fr; gap: 1.25rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .marker .t { font-size: clamp(2.6rem, 13vw, 4rem); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">davide<span class="logo-bold">Valentini</span></a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html#approccio">Approccio</a></li>
+    <li><a href="index.html#progetti">Progetti</a></li>
+    <li><a href="index.html#about">Chi sono</a></li>
+    <li><a href="index.html#contatto">Contatto</a></li>
+  </ul>
+</nav>
+
+<!-- COVER BANNER -->
+<div class="hero-banner fade-in">
+  <img src="assets/img/europee/01-hero.jpg" alt="Banner campagna Elezioni Europee 2024 — Aurora Pezzuto, Circoscrizione Nord Est">
+</div>
+
+<!-- COVER INTRO -->
+<header class="cover-intro fade-in">
+  <a href="index.html#progetti" class="back-link">← Tutti i progetti</a>
+  <p class="cover-label">Giugno 2024</p>
+  <h1 class="cover-title">Elezioni Europee <em>2024</em></h1>
+  <div class="cover-tags">
+    <span>Strategic Design</span><i>✦</i>
+    <span>Digital Strategy</span><i>✦</i>
+    <span>Political Communication</span><i>✦</i>
+    <span>Visual Branding</span>
+  </div>
+  <dl class="cover-meta">
+    <div><dt>Ruolo</dt><dd>Strategia, creatività<br>e gestione campagne</dd></div>
+    <div><dt>Cliente</dt><dd>Aurora Pezzuto<br>Lista Stati Uniti d'Europa</dd></div>
+    <div><dt>Periodo</dt><dd>Maggio – Giugno 2024<br>&lt; 1 mese, budget contenuto</dd></div>
+  </dl>
+</header>
+
+<!-- 00 SFIDA -->
+<section class="wrap fade-in" style="padding-bottom: clamp(2rem,4vw,3rem);">
+  <div class="marker"><span class="n">00.</span><span class="t">Sfida</span></div>
+  <div class="cols">
+    <div class="body col-a">
+      <p>A meno di un mese dalle elezioni, progettare l'intera <span class="h">strategia di comunicazione</span> di <b>Aurora Pezzuto</b>, candidata alle Elezioni Europee 2024 per conto di LibDem Europei all'interno della lista di <b>Stati Uniti d'Europa</b>.</p>
+    </div>
+    <div class="body col-b">
+      <p>Anche se <span class="h">il mondo della politica</span> sembra molto distante da quello aziendale, può essere molto <span class="h">formativo</span> per chi si occupa di strategia e comunicazione. I brand commerciali ormai non vendono più solo il prodotto-servizio, ma <span class="h">anche le idee e i valori</span> che gli ruotano intorno. Idee e valori, proprio come la comunicazione politica!</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY (full-bleed) -->
+<div class="full-bleed fade-in">
+  <img src="assets/img/europee/02-gallery.png" alt="Tre scatti della candidata Aurora Pezzuto durante la campagna, con leader della lista">
+</div>
+
+<!-- 01 CONTESTO -->
+<section class="wrap fade-in">
+  <div class="marker"><span class="n">01.</span><span class="t">Contesto</span></div>
+  <div class="body">
+    <p>In questa fase si è svolta una profonda <span class="h">analisi</span> del contesto: dallo <b>scenario elettorale</b> all'identità della lista, dai punti di forza e dalle <span class="h">motivazioni della candidata</span> (personal branding) al <b>mercato elettorale</b> e alle sue richieste politiche e comunicative.</p>
+  </div>
+  <div class="cards">
+    <img src="assets/img/europee/03-contesto-bio.jpg" alt="Card di presentazione della candidata Aurora Pezzuto">
+    <img src="assets/img/europee/03-contesto-usp.png" alt="Punti di forza e USP della candidata: profilo, formazione e credibilità sui temi">
+  </div>
+</section>
+
+<!-- 02 INSIGHT -->
+<section class="wrap fade-in">
+  <div class="marker"><span class="n">02.</span><span class="t">Insight</span></div>
+  <div class="cols">
+    <div class="body col-a">
+      <p>Considerati i risultati delle ricerche e delle analisi, è stato stabilito un chiaro <span class="h">posizionamento</span> che mettesse in luce il <b>differenziale competitivo</b> della giovane candidata (il suo USP) e, di conseguenza, <span class="h">temi</span> distintivi e <b>messaggi</b> efficaci.</p>
+    </div>
+    <div class="body col-b">
+      <p>Molti elementi di analisi esterna della <span class="h">fase strategica</span> ovviamente non posso mostrarli. Ma ci sono stati e si sono dimostrati fondamentali per <span class="h">impostare le linee guida</span> per la fase di realizzazione.</p>
+    </div>
+  </div>
+  <div class="fig">
+    <img src="assets/img/europee/04-insight-temi.png" alt="I sei temi distintivi della campagna: IA, giovani e futuro, ambiente e nucleare, mercato e concorrenza, regolamentazioni, difesa comune europea">
+  </div>
+</section>
+
+<!-- 03 OBIETTIVI -->
+<section class="wrap fade-in">
+  <div class="marker"><span class="n">03.</span><span class="t">Obiettivi</span></div>
+  <div class="body">
+    <p>Stabiliti insieme alla candidata i temi e i <b>messaggi</b> della campagna, l'obiettivo è diventato progettare e definire una <span class="h">strategia di comunicazione transmediale</span>, in cui contenuti diversi vengono proposti ad <b>audience specifiche</b> attraverso <b>canali differenziati</b> e, di conseguenza, linguaggi appropriati.</p>
+  </div>
+  <div class="fig">
+    <img src="assets/img/europee/05-obiettivi-cluster.png" alt="Target generico e quattro cluster principali dell'elettorato, con interessi e temi associati">
+  </div>
+  <div class="fig">
+    <img src="assets/img/europee/05-obiettivi-funnel.png" alt="Funnel della campagna: awareness, interest, consideration, conversion attraverso Instagram, Facebook e WhatsApp">
+  </div>
+</section>
+
+<!-- 04 IDEAZIONE -->
+<section class="wrap fade-in" style="padding-bottom: clamp(2rem,4vw,3rem);">
+  <div class="marker"><span class="n">04.</span><span class="t">Ideazione</span></div>
+  <div class="body">
+    <p>Ho quindi proposto <b>slogan</b> e soluzioni creative di <span class="h">immagine coordinata</span>, realizzato le <b>grafiche</b> di santini, poster, banner e card per i diversi social, scritto e montato <b>video brevi</b> per i social, avviato e gestito le <span class="h">inserzioni micro-targetizzate</span> su Meta.</p>
+  </div>
+</section>
+
+<!-- IDEAZIONE — post mockups -->
+<div class="wrap-media fade-in">
+  <img src="assets/img/europee/06-ideazione-post.png" alt="Mockup dei post Instagram della campagna e card testimonial">
+</div>
+
+<!-- 05 RISULTATO -->
+<section class="wrap fade-in" style="padding-bottom: clamp(2rem,4vw,3rem);">
+  <div class="marker"><span class="n">05.</span><span class="t">Risultato</span></div>
+  <div class="body">
+    <p>Il <b>micro-targeting</b> utilizzato per la promozione differenziata di ciascun contenuto ha portato ad un <span class="h">esito eccellente</span>. Considerato il deludente risultato della lista e il budget contenuto, Pezzuto ha ottenuto un <b>ottimo</b> <span class="h">numero di preferenze</span> (1.822), che l'hanno portata a <b>superare altri</b> candidati inizialmente più quotati.</p>
+  </div>
+</section>
+
+<!-- MATERIALI (full-bleed) -->
+<div class="full-bleed fade-in">
+  <img src="assets/img/europee/07-risultato-materiali.png" alt="Materiali della campagna: manifesti, volantini, cartoline e post social">
+</div>
+
+<!-- STATS (full-bleed) -->
+<div class="full-bleed fade-in">
+  <img src="assets/img/europee/07-risultato-stats.jpg" alt="Performance della campagna: budget, reach, impressions, CPM, CPC, CTR">
+</div>
+
+<!-- PHONES (contained, lieve sovrapposizione su stats) -->
+<div class="wrap-media phones-overlap fade-in">
+  <img src="assets/img/europee/07-risultato-phones.png" alt="Contenuti social della campagna: profilo Instagram, reel e copertura stampa">
+</div>
+
+<!-- PARLAMENTO (full-bleed) -->
+<div class="full-bleed fade-in">
+  <img src="assets/img/europee/08-parlamento.png" alt="Emiciclo del Parlamento Europeo">
+</div>
+
+<!-- APPROFONDIAMO (contained) -->
+<div class="wrap-media fade-in">
+  <img src="assets/img/europee/09-approfondiamo.png" alt="Serie di card di approfondimento e canale WhatsApp della campagna">
+</div>
+
+<!-- CLOSING -->
+<section class="closing fade-in">
+  <p>Un sistema completo, dalla strategia <em>all'ultimo santino.</em></p>
+  <div class="cta-row">
+    <a href="index.html#progetti" class="btn-secondary">← Tutti i progetti</a>
+    <a href="index.html#contatto" class="btn-primary">Parliamoci</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Davide Valentini</span>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/d-valentini" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="#" onclick="alert('CV disponibile su richiesta — scrivi a hi@davidevalentini.com'); return false;">CV</a>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+      document.body.style.overflow = '';
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
