@@ -64,7 +64,7 @@
     text-transform: uppercase; color: var(--dark); text-decoration: none;
     transition: color 0.4s; font-weight: 400;
   }
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover { color: var(--accent-mid); }
   .nav-toggle {
     display: none; flex-direction: column; justify-content: center; gap: 5px;
     background: none; border: none; cursor: pointer; padding: 4px; z-index: 101;
@@ -101,7 +101,7 @@
   .back-link:hover { color: var(--accent); gap: 0.85rem; }
 
   .cover-label {
-    font-family: var(--serif); font-size: 0.85rem; letter-spacing: 0.03em;
+    font-family: var(--serif); font-size: 0.95rem; letter-spacing: 0.03em;
     color: var(--accent); margin-bottom: 1.25rem;
     display: flex; align-items: center; gap: 0.75rem; font-weight: 300;
   }
@@ -115,14 +115,19 @@
   .cover-title em { font-style: italic; color: var(--accent); }
 
   .cover-tags {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.1rem 0.9rem;
     margin-bottom: 2rem;
   }
   .cover-tags span {
-    font-family: var(--serif); font-size: 1rem; letter-spacing: 0.08em;
+    font-family: var(--serif); font-size: 1.2rem; letter-spacing: 0.06em;
     text-transform: uppercase; color: var(--dark); font-style: italic;
   }
-  .cover-tags i { color: var(--accent); font-style: normal; font-size: 0.6rem; }
+  .cover-tags span-highlight {
+    font-family: var(--serif); font-size: 1.2rem; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--accent); font-style: italic;
+    border-bottom: 5px solid var(--light);
+  }
+    .cover-tags i { color: var(--accent); font-style: normal; font-size: 0.6rem; }
 
   .cover-meta {
     display: grid; grid-template-columns: repeat(3, auto); gap: 2.5rem;
@@ -275,13 +280,14 @@
   <p class="cover-label">Giugno 2024</p>
   <h1 class="cover-title">Elezioni Europee <em>2024</em></h1>
   <div class="cover-tags">
-    <span>Strategic Design</span><i>✦</i>
+    <span-highlight>Political branding</span-highlight><i>✦</i>
+    <span>Brand Strategy</span><i>✦</i>
     <span>Digital Strategy</span><i>✦</i>
-    <span>Political Communication</span><i>✦</i>
-    <span>Visual Branding</span>
+    <span>Visual identity</span><i>✦</i>
+    <span>Meta Ads</span>
   </div>
   <dl class="cover-meta">
-    <div><dt>Ruolo</dt><dd>Strategia, creatività<br>e gestione campagne</dd></div>
+    <div><dt>Ruolo</dt><dd>Unico responsabile: strategia, <br>creatività e gestione ads</dd></div>
     <div><dt>Cliente</dt><dd>Aurora Pezzuto<br>Lista Stati Uniti d'Europa</dd></div>
     <div><dt>Periodo</dt><dd>Maggio – Giugno 2024<br>&lt; 1 mese, budget contenuto</dd></div>
   </dl>
@@ -292,10 +298,10 @@
   <div class="marker"><span class="n">00.</span><span class="t">Sfida</span></div>
   <div class="cols">
     <div class="body col-a">
-      <p>A meno di un mese dalle elezioni, progettare l'intera <span class="h">strategia di comunicazione</span> di <b>Aurora Pezzuto</b>, candidata alle Elezioni Europee 2024 per conto di LibDem Europei all'interno della lista di <b>Stati Uniti d'Europa</b>.</p>
+      <p>Un'amica si candida alle Europee 2024 nella lista <b>Stati Uniti d'Europa</b> — componente minore di una coalizione minore di una lista minore. Venticinque anni, <span class="h">prima candidatura</span>, nessuna comunicazione esistente. Le propongo di occuparmi io di <b>tutto</b>: strategia, identità, contenuti, campagne. Pro bono, un mese di tempo, budget quasi zero.</p>
     </div>
     <div class="body col-b">
-      <p>Anche se <span class="h">il mondo della politica</span> sembra molto distante da quello aziendale, può essere molto <span class="h">formativo</span> per chi si occupa di strategia e comunicazione. I brand commerciali ormai non vendono più solo il prodotto-servizio, ma <span class="h">anche le idee e i valori</span> che gli ruotano intorno. Idee e valori, proprio come la comunicazione politica!</p>
+      <p>Comunicazione politica e comunicazione aziendale funzionano allo stesso modo: <span class="h">posizionamento, messaggi per target, differenziale competitivo, conversione</span>. La differenza è che in politica hai meno tempo, meno budget e il "prodotto" è una persona. È il contesto più formativo che esista per chi fa strategia di brand.</p>
     </div>
   </div>
 </section>
@@ -309,7 +315,7 @@
 <section class="wrap fade-in">
   <div class="marker"><span class="n">01.</span><span class="t">Contesto</span></div>
   <div class="body">
-    <p>In questa fase si è svolta una profonda <span class="h">analisi</span> del contesto: dallo <b>scenario elettorale</b> all'identità della lista, dai punti di forza e dalle <span class="h">motivazioni della candidata</span> (personal branding) al <b>mercato elettorale</b> e alle sue richieste politiche e comunicative.</p>
+    <p>Ho analizzato lo <b>scenario elettorale</b>, l'identità della lista e il profilo di Aurora come persona e come politica. L'obiettivo era trovare un <span class="h">posizionamento credibile e differenziante</span>: in una coalizione eterogenea, Aurora era la candidata più giovane e più autenticamente liberale — e quello è diventato il suo <b>differenziale competitivo</b>.</p>
   </div>
   <div class="cards">
     <img src="assets/img/europee/03-contesto-bio.jpg" alt="Card di presentazione della candidata Aurora Pezzuto">
@@ -322,10 +328,10 @@
   <div class="marker"><span class="n">02.</span><span class="t">Insight</span></div>
   <div class="cols">
     <div class="body col-a">
-      <p>Considerati i risultati delle ricerche e delle analisi, è stato stabilito un chiaro <span class="h">posizionamento</span> che mettesse in luce il <b>differenziale competitivo</b> della giovane candidata (il suo USP) e, di conseguenza, <span class="h">temi</span> distintivi e <b>messaggi</b> efficaci.</p>
+      <p>Dal posizionamento ho derivato <b>sei temi chiave</b>, incrociando le <span class="h">convinzioni reali di Aurora</span> con la <span class="h">domanda dell'elettorato</span> e lo spazio lasciato libero dagli altri candidati. Non slogan generici: <b>messaggi specifici</b> su temi specifici, pensati per cluster di elettori diversi.</p>
     </div>
     <div class="body col-b">
-      <p>Molti elementi di analisi esterna della <span class="h">fase strategica</span> ovviamente non posso mostrarli. Ma ci sono stati e si sono dimostrati fondamentali per <span class="h">impostare le linee guida</span> per la fase di realizzazione.</p>
+      <p>L'analisi strategica è riservata, ma ogni scelta creativa e operativa che segue è derivata direttamente da lì. Il <span class="h">metodo</span> è lo stesso che applico ai brand: capire il mercato, trovare il differenziale, costruire messaggi coerenti.</p>
     </div>
   </div>
   <div class="fig">
@@ -337,7 +343,7 @@
 <section class="wrap fade-in">
   <div class="marker"><span class="n">03.</span><span class="t">Obiettivi</span></div>
   <div class="body">
-    <p>Stabiliti insieme alla candidata i temi e i <b>messaggi</b> della campagna, l'obiettivo è diventato progettare e definire una <span class="h">strategia di comunicazione transmediale</span>, in cui contenuti diversi vengono proposti ad <b>audience specifiche</b> attraverso <b>canali differenziati</b> e, di conseguenza, linguaggi appropriati.</p>
+    <p>Un mese e quasi zero budget significava una cosa: <b>concentrare tutto</b>. Pochi messaggi, canali giusti, <span class="h">targeting preciso</span>. Ho progettato una <b>user journey</b> che partiva dalle inserzioni su Instagram e Facebook, passava per i profili social, arrivava al canale WhatsApp per l'approfondimento, e puntava alla conversione — <span class="h">scrivere il nome sulla scheda</span>.</p>
   </div>
   <div class="fig">
     <img src="assets/img/europee/05-obiettivi-cluster.png" alt="Target generico e quattro cluster principali dell'elettorato, con interessi e temi associati">
@@ -351,7 +357,7 @@
 <section class="wrap fade-in" style="padding-bottom: clamp(2rem,4vw,3rem);">
   <div class="marker"><span class="n">04.</span><span class="t">Ideazione</span></div>
   <div class="body">
-    <p>Ho quindi proposto <b>slogan</b> e soluzioni creative di <span class="h">immagine coordinata</span>, realizzato le <b>grafiche</b> di santini, poster, banner e card per i diversi social, scritto e montato <b>video brevi</b> per i social, avviato e gestito le <span class="h">inserzioni micro-targetizzate</span> su Meta.</p>
+    <p>Ho progettato l'<span class="h">immagine coordinata</span> e prodotto <b>ogni elemento grafico</b>: santini, manifesti, brochure, banner, card per i social. Ho montato reel, ideato il canale WhatsApp come strumento di fidelizzazione, e <b>gestito direttamente</b> le <span class="h">inserzioni micro-targetizzate</span> su Meta — allocando il budget in tempo reale in base alle performance di ogni contenuto su ogni cluster.</p>
   </div>
 </section>
 
@@ -364,7 +370,7 @@
 <section class="wrap fade-in" style="padding-bottom: clamp(2rem,4vw,3rem);">
   <div class="marker"><span class="n">05.</span><span class="t">Risultato</span></div>
   <div class="body">
-    <p>Il <b>micro-targeting</b> utilizzato per la promozione differenziata di ciascun contenuto ha portato ad un <span class="h">esito eccellente</span>. Considerato il deludente risultato della lista e il budget contenuto, Pezzuto ha ottenuto un <b>ottimo</b> <span class="h">numero di preferenze</span> (1.822), che l'hanno portata a <b>superare altri</b> candidati inizialmente più quotati.</p>
+    <p>Con <b>560€ di budget totale</b> e metriche costantemente migliori delle medie di mercato su ogni indicatore, Aurora ha ottenuto <b>1.822 preferenze</b> — <span class="h">superando candidati più radicati</span> e con maggiore visibilità iniziale. In una lista che nel complesso ha deluso, è un risultato che dimostra cosa possono fare un <span class="h">posizionamento preciso</span> e un'allocazione intelligente del budget.</p>
   </div>
 </section>
 
