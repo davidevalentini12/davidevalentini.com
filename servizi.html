@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servizi — Davide Valentini</title>
+<meta name="description" content="I servizi di brand e communication strategy: audit strategico, identità, contenuti, campagne e continuità mensile.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #FFFFFF;
+    --bg: #F5F7F7;
+    --light: #E5EAE8;
+    --accent-mid: #009999;
+    --accent: #017878;
+    --dark: #112B2B;
+    --darkest: #001111;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans-head: 'Inter Tight', system-ui, sans-serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --max: 1120px;
+    --gutter: clamp(1.5rem, 5vw, 4rem);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--darkest);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV (shared with index) ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem var(--gutter);
+    background: var(--bg);
+    border-bottom: 1px solid var(--light);
+  }
+  .nav-logo {
+    font-family: var(--sans-head);
+    font-size: 1.1rem; font-weight: 400;
+    color: var(--darkest); text-decoration: none; letter-spacing: 0.02em;
+  }
+  .nav-logo .logo-bold { font-weight: 700; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--sans-head); font-size: 0.8rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--dark); text-decoration: none;
+    transition: color 0.4s; font-weight: 400;
+  }
+  .nav-links a:hover { color: var(--accent-mid); }
+  .nav-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px; z-index: 101;
+  }
+  .nav-toggle span {
+    display: block; width: 24px; height: 1.5px; background: var(--darkest);
+    transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    max-width: var(--max); margin: 0 auto;
+    padding: calc(66px + clamp(2.5rem, 5vw, 4rem)) var(--gutter) clamp(2rem, 4vw, 3rem);
+  }
+  .page-label {
+    font-family: var(--serif); font-size: 0.95rem; letter-spacing: 0.03em;
+    color: var(--accent); margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 0.75rem; font-weight: 300;
+  }
+  .page-label::before {
+    content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent);
+  }
+  .page-title {
+    font-family: var(--sans-head); font-size: clamp(2.6rem, 6vw, 4.5rem);
+    line-height: 1.02; letter-spacing: -0.02em; color: var(--darkest);
+    margin-bottom: 1.25rem; font-weight: 900;
+  }
+  .page-title em { font-style: italic; color: var(--accent); font-family: var(--serif); font-weight: 400; }
+  .page-sub {
+    font-size: clamp(0.92rem, 1vw, 1rem); color: var(--dark);
+    line-height: 1.85; max-width: 56ch; font-weight: 300;
+  }
+
+  /* ── ACCORDION ── */
+  .servizi-wrap {
+    max-width: var(--max); margin: 0 auto;
+    padding: 0 var(--gutter) clamp(4rem, 7vw, 6rem);
+  }
+
+  .pkg {
+    background: var(--white);
+    border: 1px solid var(--light);
+    margin-bottom: 0.75rem;
+  }
+
+  .pkg-header {
+    display: flex; align-items: center; gap: clamp(1rem, 2vw, 1.5rem);
+    padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.25rem, 2.5vw, 2rem);
+    cursor: pointer; user-select: none;
+    transition: background 0.2s;
+  }
+  .pkg-header:hover { background: var(--bg); }
+
+  .pkg-num {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(1.4rem, 2vw, 1.8rem); color: var(--light);
+    line-height: 1; flex-shrink: 0; min-width: 2.2ch;
+    transition: color 0.3s;
+  }
+  .pkg.open .pkg-num { color: var(--accent); }
+
+  .pkg-info { flex: 1; min-width: 0; }
+  .pkg-name {
+    font-family: var(--sans-head); font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+    font-weight: 700; color: var(--darkest); line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .pkg-sub {
+    font-size: 0.8rem; color: var(--dark); margin-top: 0.2rem;
+    font-weight: 300; line-height: 1.5;
+  }
+
+  .pkg-price {
+    font-family: var(--sans-head); font-size: 0.8rem; font-weight: 600;
+    color: var(--dark); white-space: nowrap; flex-shrink: 0;
+    background: var(--light); padding: 0.3rem 0.75rem;
+  }
+
+  .chevron {
+    flex-shrink: 0; width: 10px; height: 10px;
+    border-right: 1.5px solid var(--dark);
+    border-bottom: 1.5px solid var(--dark);
+    transform: rotate(-45deg);
+    transition: transform 0.25s ease;
+    margin-left: 0.25rem;
+  }
+  .pkg.open .chevron { transform: rotate(45deg); }
+
+  .pkg-body {
+    display: none;
+    padding: 0 clamp(1.25rem, 2.5vw, 2rem) clamp(1.5rem, 3vw, 2rem);
+    border-top: 1px solid var(--light);
+  }
+  .pkg.open .pkg-body { display: block; }
+
+  .pkg-desc {
+    font-size: 0.9rem; color: var(--dark); line-height: 1.8;
+    font-weight: 300; max-width: 62ch;
+    padding-top: clamp(1.25rem, 2.5vw, 1.5rem);
+    margin-bottom: 1.5rem;
+  }
+  .pkg-desc b { color: var(--darkest); font-weight: 500; }
+
+  /* phase label */
+  .phase {
+    font-family: var(--sans-head); font-size: 0.75rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--dark); font-weight: 700;
+    margin: 1.5rem 0 0.65rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .phase::after { content: ''; flex: 1; height: 1px; background: var(--light); }
+  .phase:first-of-type { margin-top: 0; }
+
+  .phase.incluso { color: var(--darkest); }
+  .phase.incluso::before {
+    content: '★'; font-size: 0.55rem; color: var(--accent);
+  }
+
+  /* items — single column, one per row */
+  .items { display: flex; flex-direction: column; gap: 1px; background: var(--light); }
+  .item {
+    display: flex; gap: 1rem; align-items: baseline;
+    background: var(--bg); padding: 0.7rem 1rem;
+  }
+  .code {
+    font-family: var(--sans-head); font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent);
+    flex-shrink: 0; min-width: 92px;
+  }
+  .item-text {
+    font-size: 0.85rem; color: var(--dark); line-height: 1.6; font-weight: 300;
+  }
+  .item-text span { color: rgba(17,43,43,0.5); font-size: 0.8rem; }
+
+  /* sub-package */
+  .subpkg { border: 1px solid var(--light); margin-top: 1.25rem; }
+  .subpkg-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.85rem 1rem; background: var(--bg);
+    border-bottom: 1px solid var(--light);
+  }
+  .subpkg-name {
+    font-family: var(--sans-head); font-size: 0.9rem; font-weight: 700;
+    color: var(--darkest);
+  }
+  .subpkg-price {
+    font-family: var(--sans-head); font-size: 0.72rem; font-weight: 600;
+    color: var(--dark); background: var(--light); padding: 0.2rem 0.6rem;
+    white-space: nowrap;
+  }
+  .subpkg .items { background: transparent; }
+  .subpkg .item { background: var(--white); border-bottom: 1px solid var(--light); }
+  .subpkg .item:last-child { border-bottom: none; }
+
+  /* price scale rows */
+  .scale {
+    margin-top: 1.25rem; border: 1px solid var(--light);
+  }
+  .scale-row {
+    display: flex; gap: 1rem; align-items: baseline;
+    padding: 0.65rem 1rem; border-bottom: 1px solid var(--light);
+    background: var(--white);
+  }
+  .scale-row:last-child { border-bottom: none; }
+  .scale-price {
+    font-family: var(--sans-head); font-size: 0.82rem; font-weight: 700;
+    color: var(--darkest); flex-shrink: 0; min-width: 92px;
+  }
+  .scale-desc { font-size: 0.85rem; color: var(--dark); font-weight: 300; line-height: 1.6; }
+
+  /* fork ABM / Inbound */
+  .fork {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--light); margin-top: 0.65rem;
+  }
+  .branch { background: var(--bg); padding: 1.1rem 1rem; }
+  .branch-head {
+    font-family: var(--sans-head); font-size: 0.88rem; font-weight: 700;
+    color: var(--darkest); margin-bottom: 0.2rem;
+  }
+  .branch-when {
+    font-family: var(--serif); font-style: italic;
+    font-size: 0.82rem; color: var(--accent); line-height: 1.5;
+    margin-bottom: 0.85rem; padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--light);
+  }
+  .branch .items { background: transparent; gap: 0; }
+  .branch .item {
+    background: var(--white); flex-direction: column; gap: 0.15rem;
+    padding: 0.6rem 0.85rem; border-bottom: 1px solid var(--light);
+  }
+  .branch .item:last-child { border-bottom: none; }
+  .branch .code { min-width: 0; }
+
+  /* note */
+  .note {
+    margin-top: 1.25rem; padding: 0.8rem 1rem;
+    border-left: 3px solid var(--accent);
+    background: var(--bg);
+    font-size: 0.82rem; color: var(--dark); line-height: 1.7; font-weight: 300;
+  }
+  .note b { color: var(--darkest); font-weight: 500; }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: var(--accent-mid);
+    padding: clamp(3.5rem, 7vw, 6rem) var(--gutter);
+    text-align: center;
+  }
+  .closing p {
+    font-family: var(--serif); font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.35; color: var(--white); max-width: 24ch; margin: 0 auto 2rem;
+  }
+  .closing p em { font-style: italic; color: var(--darkest); }
+  .btn-primary {
+    display: inline-block;
+    background: var(--dark); color: var(--white); text-decoration: none;
+    padding: 0.85rem 2rem; font-family: var(--sans-head); font-size: 0.78rem;
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); color: var(--light); }
+
+  /* ── FOOTER (shared with index) ── */
+  footer {
+    padding: 2rem var(--gutter); display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--light); max-width: var(--max); margin: 0 auto;
+    font-family: var(--sans-head); font-size: 0.75rem; color: rgba(17,43,43,0.35); font-weight: 300;
+  }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: rgba(17,43,43,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── FADE IN ── */
+  .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--bg); flex-direction: column; align-items: center; justify-content: center;
+      gap: 2.5rem; z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 1.1rem; }
+
+    .fork { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .pkg-header { flex-wrap: wrap; }
+    .pkg-info { flex-basis: calc(100% - 2.2ch - 1rem - 10px - 1rem); }
+    .pkg-price { margin-left: calc(2.2ch + 1rem); }
+    .item { flex-direction: column; gap: 0.15rem; }
+    .code { min-width: 0; }
+    .scale-row { flex-direction: column; gap: 0.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">davide<span class="logo-bold">Valentini</span></a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html#approccio">Approccio</a></li>
+    <li><a href="index.html#progetti">Progetti</a></li>
+    <li><a href="index.html#about">Chi sono</a></li>
+    <li><a href="index.html#contatto">Contatto</a></li>
+  </ul>
+</nav>
+
+<!-- HEADER -->
+<header class="page-header fade-in">
+  <p class="page-sub">
+    Ogni pacchetto costruisce sul precedente. Si parte dall'audit strategico;
+    i successivi sono facoltativi e si attivano in base a ciò che emerge dall'analisi.
+  </p>
+</header>
+
+<!-- SERVIZI -->
+<div class="servizi-wrap">
+
+  <!-- 01 BRAND AUDIT + STRATEGIA -->
+  <div class="pkg open fade-in">
+    <div class="pkg-header" onclick="togglePkg(this)">
+      <span class="pkg-num">01.</span>
+      <div class="pkg-info">
+        <p class="pkg-name">Brand audit + strategia</p>
+        <p class="pkg-sub">Il punto di partenza — genera tutto il resto</p>
+      </div>
+      <span class="pkg-price">€ 1.800–2.500</span>
+      <span class="chevron"></span>
+    </div>
+    <div class="pkg-body">
+      <p class="pkg-desc">
+        Prima di toccare sito, logo o campagne: capire dove si trova l'azienda e dove dovrebbe essere.
+        Il deliverable è un <b>documento strategico</b> che mette nero su bianco posizionamento,
+        messaggio e tono di voce — la base su cui ogni investimento successivo diventa coerente.
+      </p>
+
+      <p class="phase">Audit</p>
+      <div class="items">
+        <div class="item"><span class="code">Identità</span><span class="item-text">Analisi di storia e offerta</span></div>
+        <div class="item"><span class="code">Competitor</span><span class="item-text">Analisi dei 3–4 competitor diretti principali</span></div>
+        <div class="item"><span class="code">Target</span><span class="item-text">Descrizione del cliente ideale e dei suoi pain point</span></div>
+      </div>
+
+      <p class="phase">Strategia</p>
+      <div class="items">
+        <div class="item"><span class="code">SWOT</span><span class="item-text">Analisi del presente e delle prospettive</span></div>
+        <div class="item"><span class="code">Positioning</span><span class="item-text">Identificazione del differenziale competitivo</span></div>
+        <div class="item"><span class="code">Messaggio</span><span class="item-text">Identificazione dell'oggetto da comunicare (la promessa)</span></div>
+        <div class="item"><span class="code">Tono di voce</span><span class="item-text">Identificazione del modo di comunicare</span></div>
+      </div>
+
+      <div class="note">
+        Il documento si chiude con i <b>next steps</b>: le azioni concrete che emergono dall'analisi.
+        I pacchetti successivi nascono da lì — non da un listino.
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 IDENTITÀ E PRESENZA -->
+  <div class="pkg fade-in">
+    <div class="pkg-header" onclick="togglePkg(this)">
+      <span class="pkg-num">02.</span>
+      <div class="pkg-info">
+        <p class="pkg-name">Identità e presenza</p>
+        <p class="pkg-sub">Visual identity + sito web, acquistabili separatamente</p>
+      </div>
+      <span class="pkg-price">€ 2.500–4.000</span>
+      <span class="chevron"></span>
+    </div>
+    <div class="pkg-body">
+      <p class="pkg-desc">
+        L'identità visiva e il sito traducono la strategia in qualcosa di visibile.
+        Due sotto-pacchetti indipendenti, entrambi derivati dal posizionamento
+        definito nell'audit e orientati alla conversione.
+      </p>
+
+      <div class="subpkg">
+        <div class="subpkg-head">
+          <span class="subpkg-name">Visual identity</span>
+          <span class="subpkg-price">€ 1.500–2.000</span>
+        </div>
+        <div class="items">
+          <div class="item"><span class="code">Brief</span><span class="item-text">Traduzione del posizionamento in direzione creativa</span></div>
+          <div class="item"><span class="code">Design system</span><span class="item-text">Progettazione di logo e brand guidelines</span></div>
+          <div class="item"><span class="code">Materiali</span><span class="item-text">Progettazione di template, profili e materiali ricorrenti</span></div>
+          <div class="item"><span class="code">Asset foto</span><span class="item-text">Direzione ed editing di asset visivi fotografici <span>(eventuali)</span></span></div>
+        </div>
+      </div>
+
+      <div class="subpkg">
+        <div class="subpkg-head">
+          <span class="subpkg-name">Sito web</span>
+          <span class="subpkg-price">€ 1.000–2.000</span>
+        </div>
+        <div class="items">
+          <div class="item"><span class="code">Brief</span><span class="item-text">Definizione di obiettivo, dimensione, architettura</span></div>
+          <div class="item"><span class="code">Content</span><span class="item-text">Copy delle pagine scritto per convertire, inclusi 2 case study</span></div>
+          <div class="item"><span class="code">UI</span><span class="item-text">Progettazione estetica coerente con la visual identity</span></div>
+          <div class="item"><span class="code">SEO + GEO</span><span class="item-text">Ottimizzazione per motori di ricerca e per AI search <span>(struttura, markup, chiarezza)</span></span></div>
+          <div class="item"><span class="code">Upload</span><span class="item-text">Setup di dominio, hosting, contatto, analytics</span></div>
+        </div>
+      </div>
+
+      <div class="scale">
+        <div class="scale-row"><span class="scale-price">€ 1.000</span><span class="scale-desc">Sito 2-3 pagine</span></div>
+        <div class="scale-row"><span class="scale-price">€ 1.500</span><span class="scale-desc">Sito 4–5 pagine (standard B2B)</span></div>
+        <div class="scale-row"><span class="scale-price">€ 2.000</span><span class="scale-desc">6+ pagine + blog</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 AUTOREVOLEZZA E CREDIBILITÀ -->
+  <div class="pkg fade-in">
+    <div class="pkg-header" onclick="togglePkg(this)">
+      <span class="pkg-num">03.</span>
+      <div class="pkg-info">
+        <p class="pkg-name">Autorevolezza e credibilità</p>
+        <p class="pkg-sub">Thought leadership — primo mese di contenuti incluso</p>
+      </div>
+      <span class="pkg-price">€ 1.600–2.200</span>
+      <span class="chevron"></span>
+    </div>
+    <div class="pkg-body">
+      <p class="pkg-desc">
+        Un piano di contenuti che posiziona l'azienda — e, se incluso, il suo fondatore —
+        come riferimento nel proprio settore. Il primo mese di produzione e pubblicazione
+        è incluso nel prezzo: i contenuti reali, pubblicati, sono la prova del piano.
+      </p>
+
+      <p class="phase">Il piano</p>
+      <div class="items">
+        <div class="item"><span class="code">Brief</span><span class="item-text">Definizione di frequenza, formati, temi, obiettivi</span></div>
+        <div class="item"><span class="code">Brand plan</span><span class="item-text">Piano editoriale trimestrale del brand</span></div>
+        <div class="item"><span class="code">CEO plan</span><span class="item-text">Piano editoriale trimestrale del CEO/founder <span>(se incluso)</span></span></div>
+      </div>
+
+      <p class="phase incluso">1° mese di operatività incluso</p>
+      <div class="items">
+        <div class="item"><span class="code">Produzione</span><span class="item-text">Copy e creatività dei contenuti del primo mese</span></div>
+        <div class="item"><span class="code">Pubblicazione</span><span class="item-text">Pubblicazione e gestione sui canali per il primo mese</span></div>
+      </div>
+
+      <div class="scale">
+        <div class="scale-row"><span class="scale-price">€ 1.600</span><span class="scale-desc">Solo profilo brand</span></div>
+        <div class="scale-row"><span class="scale-price">€ 2.200</span><span class="scale-desc">Brand + profilo CEO/founder</span></div>
+      </div>
+
+      <div class="note">
+        Dal secondo mese, la produzione continua passa al <b>retainer mensile</b> (pacchetto 05).
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 DIFFUSIONE MIRATA -->
+  <div class="pkg fade-in">
+    <div class="pkg-header" onclick="togglePkg(this)">
+      <span class="pkg-num">04.</span>
+      <div class="pkg-info">
+        <p class="pkg-name">Diffusione mirata</p>
+        <p class="pkg-sub">Campagne ads — primo mese di gestione incluso</p>
+      </div>
+      <span class="pkg-price">€ 1.800–2.500</span>
+      <span class="chevron"></span>
+    </div>
+    <div class="pkg-body">
+      <p class="pkg-desc">
+        Portare il messaggio definito in strategia alle persone giuste, con campagne su LinkedIn e Meta.
+        L'approccio — diretto o a volume — dipende dal mercato: pochi clienti potenziali ad alto valore,
+        oppure molti a valore medio. Il primo mese di gestione è incluso nel prezzo.
+      </p>
+
+      <p class="phase">Setup — comune a entrambi gli approcci</p>
+      <div class="items">
+        <div class="item"><span class="code">KPI</span><span class="item-text">Definizione degli obiettivi misurabili</span></div>
+        <div class="item"><span class="code">Funnel</span><span class="item-text">Definizione della user journey</span></div>
+        <div class="item"><span class="code">Piattaforme</span><span class="item-text">Setup delle piattaforme e del tracciamento</span></div>
+      </div>
+
+      <p class="phase">Azione — l'approccio si definisce in base al mercato</p>
+      <div class="fork">
+        <div class="branch">
+          <p class="branch-head">→ ABM</p>
+          <p class="branch-when">Pochi clienti potenziali ad alto valore, mercato di nicchia</p>
+          <div class="items">
+            <div class="item"><span class="code">Account</span><span class="item-text">Analisi e selezione dei clienti potenziali da nano-targetizzare</span></div>
+            <div class="item"><span class="code">Messaggi</span><span class="item-text">Outreach personalizzato per account, basato sul bisogno specifico</span></div>
+            <div class="item"><span class="code">Annunci</span><span class="item-text">Annunci mirati sugli account selezionati</span></div>
+            <div class="item"><span class="code">Lancio</span><span class="item-text">Lancio su LinkedIn (+ Meta retargeting)</span></div>
+          </div>
+        </div>
+        <div class="branch">
+          <p class="branch-head">→ Inbound</p>
+          <p class="branch-when">Molti clienti potenziali a valore medio, mercato ampio</p>
+          <div class="items">
+            <div class="item"><span class="code">Magnet</span><span class="item-text">Creazione della risorsa gratuita (lead magnet)</span></div>
+            <div class="item"><span class="code">Landing</span><span class="item-text">Pagina di conversione dedicata + copy</span></div>
+            <div class="item"><span class="code">Nurturing</span><span class="item-text">Sequenza email automatica che coltiva il lead fino alla risposta: <span> da lì subentra il contatto umano</span></span></div>
+            <div class="item"><span class="code">Annunci</span><span class="item-text">Annunci a volume sul pubblico target</span></div>
+            <div class="item"><span class="code">Lancio</span><span class="item-text">Lancio su LinkedIn e Meta</span></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="phase incluso">1° mese di operatività incluso</p>
+      <div class="items">
+        <div class="item"><span class="code">Gestione</span><span class="item-text">Gestione e ottimizzazione delle campagne per il primo mese</span></div>
+        <div class="item"><span class="code">A/B test</span><span class="item-text">Test di creatività e copy, riallocazione del budget in base alle performance</span></div>
+        <div class="item"><span class="code">Report</span><span class="item-text">Report di fine mese con risultati e raccomandazioni</span></div>
+      </div>
+
+      <div class="note">
+        Il <b>budget pubblicitario</b> (Meta, LinkedIn) è separato dal compenso e rimane sotto
+        il controllo dell'azienda. Si definisce insieme in base agli obiettivi.
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 RETAINER -->
+  <div class="pkg fade-in">
+    <div class="pkg-header" onclick="togglePkg(this)">
+      <span class="pkg-num">05.</span>
+      <div class="pkg-info">
+        <p class="pkg-name">Retainer mensile</p>
+        <p class="pkg-sub">Continuità dal 2° mese — prende il testimone dei pacchetti 03 e 04</p>
+      </div>
+      <span class="pkg-price">€ 600–1.200 / mese</span>
+      <span class="chevron"></span>
+    </div>
+    <div class="pkg-body">
+      <p class="pkg-desc">
+        Per chi, dopo il primo mese incluso nei pacchetti 03 e 04, vuole continuità:
+        produzione contenuti, gestione campagne e report, su base mensile.
+        Il volume è definito a contratto — quantità precise, nessuna sorpresa.
+      </p>
+
+      <p class="phase">Incluso ogni mese — volume da definire</p>
+      <div class="items">
+        <div class="item"><span class="code">Content</span><span class="item-text">Piano, produzione e pubblicazione contenuti</span></div>
+        <div class="item"><span class="code">Ads</span><span class="item-text">Ottimizzazione campagne, A/B test, riallocazione budget</span></div>
+        <div class="item"><span class="code">GEO</span><span class="item-text">Audit di visibilità AI (ChatGPT, Perplexity) + raccomandazioni</span></div>
+        <div class="item"><span class="code">Report</span><span class="item-text">Report mensile + call di allineamento</span></div>
+      </div>
+
+      <div class="scale">
+        <div class="scale-row"><span class="scale-price">€ 600</span><span class="scale-desc">Contenuti base del brand + GEO + report</span></div>
+        <div class="scale-row"><span class="scale-price">€ 900</span><span class="scale-desc">Contenuti base del brand + contenuti base del secondo profilo + gestione ads + GEO + report</span></div>
+        <div class="scale-row"><span class="scale-price">€ 1.200</span><span class="scale-desc">Volume maggiore su 2 profili + gestione ads + GEO + report</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CLOSING -->
+<section class="closing fade-in">
+  <p>Si parte sempre da una call: <em>capire prima, proporre poi.</em></p>
+  <a href="https://calendar.google.com" target="_blank" rel="noopener" class="btn-primary">Prenota una call</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Davide Valentini</span>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/d-valentini" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="#" onclick="alert('CV disponibile su richiesta — scrivi a hi@davidevalentini.com'); return false;">CV</a>
+  </div>
+</footer>
+
+<script>
+  function togglePkg(header) {
+    header.parentElement.classList.toggle('open');
+  }
+
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+      document.body.style.overflow = '';
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
