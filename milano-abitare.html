@@ -508,7 +508,6 @@
       dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
       if (!shown) { shown = true; ring.classList.add('ready'); dot.classList.add('ready'); }
     });
-   
     const clickable = 'a, button, [role="button"]';
     document.addEventListener('mouseover', (e) => {
       if (e.target.closest(clickable)) document.documentElement.classList.add('cursor-active');
