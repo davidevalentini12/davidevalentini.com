@@ -253,7 +253,52 @@
     footer { flex-direction: column; gap: 1rem; text-align: center; }
     .marker .t { font-size: clamp(2.6rem, 13vw, 4rem); }
   }
+
+  /* ── CUSTOM CURSOR (trailing ring + spinning square) ── */
+  .has-custom-cursor, .has-custom-cursor * { cursor: none !important; }
+  #cur-ring, #cur-dot {
+    position: fixed; top: 0; left: 0; z-index: 9999;
+    pointer-events: none; opacity: 0;
+    transition: opacity 0.3s ease;
+    will-change: transform;
+  }
+  .has-custom-cursor #cur-ring.ready,
+  .has-custom-cursor #cur-dot.ready { opacity: 1; }
+  #cur-ring {
+    width: 50px; height: 50px;
+    margin: -25px 0 0 -25px;
+    border: 0.5px solid var(--accent);
+    border-radius: 50%;
+  }
+  #cur-dot .sq {
+    position: absolute; left: -6px; top: -6px;
+    width: 12px; height: 12px;
+    background: var(--accent);
+    transform: rotate(45deg);
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .cursor-active #cur-dot .sq { transform: rotate(810deg); }
+
+  /* ── REDUCED MOTION GUARD ── */
+  @media (prefers-reduced-motion: reduce) {
+    #cur-ring, #cur-dot { display: none !important; }
+  }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Milano Abitare",
+  "url": "https://davidevalentini.com/milano-abitare.html",
+  "description": "Case study: target research e strategia di comunicazione. Il vero pubblico non cerca casa, ce l'ha e teme di affittarla.",
+  "dateCreated": "2024",
+  "author": {
+    "@type": "Person",
+    "name": "Davide Valentini",
+    "url": "https://davidevalentini.com"
+  }
+}
+</script>
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -267,6 +312,11 @@
 </script>
 
 <body>
+
+<!-- CUSTOM CURSOR -->
+<div id="cur-ring" aria-hidden="true"></div>
+<div id="cur-dot" aria-hidden="true"><div class="sq"></div></div>
+
 
 <!-- NAV -->
 <nav>
@@ -441,6 +491,37 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  /* ── Custom cursor: square follows tightly, ring trails behind (desktop + motion only) ── */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  if (finePointer && !reduceMotion) {
+    document.documentElement.classList.add('has-custom-cursor');
+    const ring = document.getElementById('cur-ring');
+    const dot = document.getElementById('cur-dot');
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2;   // pointer target
+    let rx = mx, ry = my;                                          // ring (lagging)
+    let shown = false;
+    window.addEventListener('mousemove', (e) => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+      if (!shown) { shown = true; ring.classList.add('ready'); dot.classList.add('ready'); }
+    });
+    const clickable = 'a, button, [role="button"]';
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(clickable)) document.documentElement.classList.add('cursor-active');
+    });
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest(clickable) && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(clickable)))
+        document.documentElement.classList.remove('cursor-active');
+    });
+    (function loop() {
+      rx += (mx - rx) * 0.24; ry += (my - ry) * 0.24;   // trailing drag
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+      requestAnimationFrame(loop);
+    })();
+  }
 </script>
 </body>
 </html>
