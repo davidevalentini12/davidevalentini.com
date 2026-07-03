@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Davide Valentini — Brand & Communication Strategist</title>
@@ -10,35 +10,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Davide Valentini",
-  "url": "https://davidevalentini.com",
-  "image": "https://davidevalentini.com/assets/img/DV-Headshot.png",
-  "jobTitle": "Brand & Communication Strategist",
-  "email": "hi@davidevalentini.com",
-  "description": "Strategist della comunicazione per PMI B2B italiane. Brand, strategia e marketing digitale in un'unica regia.",
-  "knowsAbout": [
-    "Brand strategy",
-    "Positioning",
-    "Comunicazione B2B",
-    "Marketing digitale",
-    "Visual identity",
-    "Content strategy",
-    "LinkedIn & Meta ads"
-  ],
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "Politecnico di Milano"
-  },
-  "sameAs": [
-    "https://linkedin.com/in/d-valentini"
-  ]
-}
-</script>
-
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -141,21 +112,30 @@
 
   /* ── HERO ── */
   .hero {
+    position: relative;
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 8rem var(--gutter) 5rem;
-    max-width: var(--max);
-    margin: 0 auto;
-    gap: 5rem;
+    overflow: hidden;
   }
 
-  .hero-left { padding-bottom: 1rem; }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: var(--max);
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem var(--gutter) 5rem;
+  }
+
+  .hero-left {
+    max-width: 36rem;
+    padding-bottom: 1rem;
+  }
 
   .hero-label {
     font-family: var(--sans-head);
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--accent);
@@ -163,7 +143,7 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .hero-label::before {
@@ -176,8 +156,9 @@
 
   .hero-title {
     font-family: var(--serif);
-    font-size: clamp(3rem, 4.5vw, 4.2rem);
-    line-height: 1.08;
+    font-weight: 300;
+    font-size: clamp(3rem, 5vw, 4.8rem);
+    line-height: 1.06;
     color: var(--darkest);
     margin-bottom: 2rem;
   }
@@ -238,36 +219,50 @@
 
   .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* ── HERO RIGHT: PHOTO ── */
-  .hero-right {
-    position: relative;
-    align-self: center;
+  /* ── HERO: foto scontornata + quadrato 45° (desktop) ── */
+  .hero-photo-desktop {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: clamp(1rem, 5vw, 7rem);
+    height: min(82vh, 700px);
+    pointer-events: none;
   }
 
-  .hero-photo-wrap {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4/5;
-    overflow: hidden;
-    background: var(--light);
-  }
-
-  .hero-photo-wrap img {
-    width: 100%;
+  .hero-photo-desktop img {
     height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    width: auto;
     display: block;
   }
 
-  .hero-photo-badge {
+  .hero-diamond {
     position: absolute;
-    bottom: -1px;
-    left: -1px;
-    background: var(--darkest);
-    color: var(--white);
-    padding: 1.25rem 1.75rem;
-    max-width: 260px;
+    z-index: 0;
+    width: clamp(300px, 30vw, 460px);
+    aspect-ratio: 1;
+    right: clamp(3rem, 9vw, 12rem);
+    bottom: 22vh;
+    background: rgba(0, 153, 153, 0.3);    
+    transform: rotate(45deg);
+  }
+
+  /*.hero-diamond::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-mid);
+  }*/
+
+  /* foto quadrata con sfondo (solo mobile) */
+  .hero-photo-mobile { display: none; }
+
+  @media (max-width: 1200px) and (min-width: 861px) {
+    .hero-photo-desktop { height: min(66vh, 560px); right: 2vw; }
+    .hero-left { max-width: 30rem; }
+    .hero-title { font-size: clamp(2.5rem, 4.4vw, 3.4rem); }
   }
 
   /* ── DIFFERENZIALE (standalone section) ── */
@@ -410,6 +405,17 @@
     color: var(--darkest);
     margin-bottom: 0.75rem;
     letter-spacing: -0.01em;
+    transition: letter-spacing 0.3s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.3s ease;
+    transform-origin: left center;
+  }
+
+  /* hover sulla box ingrandisce e spazia il titolo - solo su dispositivi con hover reale (no mobile) */
+  @media (hover: hover) {
+    .approccio-item:hover .approccio-title {
+      letter-spacing: 0.03em;
+      transform: scale(1.08);
+      color: var(--dark);
+    }
   }
 
   .approccio-text {
@@ -443,20 +449,48 @@
   }
 
   .project-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1920 / 720;
     background: var(--bg);
-    display: grid;
-    grid-template-columns: 120px 1fr auto;
-    align-items: start;
-    padding: 2.5rem 2rem;
-    gap: 2.5rem;
+    display: flex;
+    align-items: center;
     cursor: pointer;
-    transition: background 0.2s;
     text-decoration: none;
     color: inherit;
   }
 
-  .project-card:hover { background: var(--white); }
-  .project-card:hover .project-arrow { transform: translate(4px, -4px); }
+  .project-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease;
+  }
+
+  .project-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem 3rem;
+    transition: opacity 0.45s ease, filter 0.45s ease, transform 0.45s ease;
+    transform-origin: center;
+  }
+
+  .project-card:hover .project-hero-img { opacity: 1; }
+  .project-card:hover .project-inner {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(1.06);
+  }
 
   .project-meta { min-width: 0; }
 
@@ -602,7 +636,7 @@
     color: rgba(245,247,247,0.65);
     line-height: 1.65;
     border-left: 2px solid transparent;
-    transition: border-color 0.2s, background 0.2s;
+    transition: border-color 0.12s, background 0.12s;
     font-weight: 300;
   }
 
@@ -665,11 +699,40 @@
   }
 
   .about-personal {
+    position: relative;
     background: var(--dark);
     padding: 2.5rem;
     font-family: var(--sans);
     font-weight: 300;
     font-size: 0.85rem;
+    overflow: hidden;
+  }
+
+  /* immagine che riempie la box in hover, rispettando i suoi bordi */
+  .about-personal-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    transform: scale(1.06);
+  }
+
+  .about-personal-label,
+  .about-personal > p {
+    position: relative;
+    z-index: 1;
+    transition: opacity 0.45s ease;
+  }
+
+  @media (hover: hover) {
+    .about-personal:hover .about-personal-img { opacity: 1; transform: scale(1); }
+    .about-personal:hover .about-personal-label,
+    .about-personal:hover > p { opacity: 0; }
   }
 
   .about-personal-label {
@@ -837,6 +900,43 @@
 
   .footer-links a:hover { color: var(--accent); }
 
+  /* ── CUSTOM CURSOR (trailing ring + spinning square) ── */
+  .has-custom-cursor, .has-custom-cursor * { cursor: none !important; }
+  #cur-ring, #cur-dot {
+    position: fixed; top: 0; left: 0; z-index: 9999;
+    pointer-events: none; opacity: 0;
+    transition: opacity 0.3s ease;
+    will-change: transform;
+  }
+  .has-custom-cursor #cur-ring.ready,
+  .has-custom-cursor #cur-dot.ready { opacity: 1; }
+  #cur-ring {
+    width: 50px; height: 50px;
+    margin: -25px 0 0 -25px;
+    border: 0.5px solid var(--accent);
+    border-radius: 50%;
+  }
+  #cur-dot .sq {
+    position: absolute; left: -6px; top: -6px;
+    width: 12px; height: 12px;
+    background: var(--accent);
+    transform: rotate(45deg);
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .cursor-active #cur-dot .sq { transform: rotate(810deg); }
+
+  /* ── MAGNETIC SKILL TAGS ── */
+  .has-motion .skill-tag-dark {
+    transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.2s, border-color 0.2s;
+    will-change: transform;
+  }
+
+  /* ── REDUCED MOTION GUARD ── */
+  @media (prefers-reduced-motion: reduce) {
+    #cur-ring, #cur-dot { display: none !important; }
+    .project-card:hover .project-inner { filter: none; transform: none; }
+  }
+
   /* ── FADE IN ── */
   .fade-in {
     opacity: 0;
@@ -868,13 +968,17 @@
     .nav-links.open { display: flex; }
     .nav-links a { font-size: 1.1rem; }
 
-    .hero { grid-template-columns: 1fr; padding-top: 6rem; gap: 3rem; }
-    .hero-right { order: -1; }
-    .hero-photo-wrap { aspect-ratio: 3/2; }
+    .hero { min-height: auto; }
+    .hero-inner { flex-direction: column; align-items: stretch; gap: 3rem; min-height: auto; padding-top: 6rem; }
+    .hero-photo-desktop, .hero-diamond { display: none; }
+    .hero-photo-mobile { display: block; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background: var(--light); }
+    .hero-photo-mobile img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     .differenziale-inner { grid-template-columns: 1fr; gap: 2rem; }
     .approccio-grid { grid-template-columns: 1fr; }
-    .project-card { grid-template-columns: 1fr; }
+    .project-card { aspect-ratio: auto; }
+    .project-inner { grid-template-columns: 1fr; padding: 2.5rem 2rem; }
     .project-arrow { display: none; }
+    .project-hero-img { filter: blur(8px); transform: scale(1.12); }
     .target-inner { grid-template-columns: 1fr; gap: 3rem; }
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
     .cv-strip { grid-template-columns: 1fr; gap: 0; }
@@ -885,6 +989,34 @@
     .section-title { font-size: clamp(3rem, 12vw, 5rem); }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Davide Valentini",
+  "url": "https://davidevalentini.com",
+  "image": "https://davidevalentini.com/assets/img/DV-Headshot.png",
+  "jobTitle": "Brand & Communication Strategist",
+  "email": "hi@davidevalentini.com",
+  "description": "Strategist della comunicazione per PMI B2B italiane. Brand, strategia e marketing digitale in un'unica regia.",
+  "knowsAbout": [
+    "Brand strategy",
+    "Positioning",
+    "Comunicazione B2B",
+    "Marketing digitale",
+    "Visual identity",
+    "Content strategy",
+    "LinkedIn & Meta ads"
+  ],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Politecnico di Milano"
+  },
+  "sameAs": [
+    "https://linkedin.com/in/d-valentini"
+  ]
+}
+</script>
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -898,6 +1030,10 @@
 </script>
 
 <body>
+
+<!-- CUSTOM CURSOR -->
+<div id="cur-ring" aria-hidden="true"></div>
+<div id="cur-dot" aria-hidden="true"><div class="sq"></div></div>
 
 <!-- NAV -->
 <nav>
@@ -915,27 +1051,29 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-left fade-in">
-    <p class="hero-label">Brand &amp; Communication Strategist</p>
-    <h1 class="hero-title">
-      Costruisco identità<br>
-      che <em>fanno la differenza</em><br>
-      sul mercato.
-    </h1>
-    <p class="hero-tagline">
-      Aiuto <strong>piccole aziende B2B</strong> a costruire un'identità chiara
-      e una presenza digitale che funziona davvero.
-      Dalla strategia all'esecuzione: <strong>una testa, non mille fornitori.</strong>
-    </p>
-    <div class="hero-cta">
-      <a href="#progetti" class="btn-primary">Guarda i progetti</a>
-      <a href="#contatto" class="btn-secondary">Parliamoci</a>
-    </div>
+  <div class="hero-diamond" aria-hidden="true"></div>
+  <div class="hero-photo-desktop fade-in" style="transition-delay: 0.15s">
+    <img src="assets/img/DV-Headshot-transparent.png" alt="Davide Valentini">
   </div>
-
-  <div class="hero-right fade-in" style="transition-delay: 0.15s">
-    <div class="hero-photo-wrap">
-     <img src="assets/img/DV-Headshot.png" alt="Davide Valentini">
+  <div class="hero-inner">
+    <div class="hero-photo-mobile fade-in">
+      <img src="assets/img/DV-Headshot.png" alt="Davide Valentini">
+    </div>
+    <div class="hero-left fade-in">
+      <p class="hero-label">Brand &amp; Communication Strategist</p>
+      <h1 class="hero-title">
+        Costruisco brand B2B<br>
+        che <em>si fanno scegliere</em>
+      </h1>
+      <p class="hero-tagline">
+        Lavoro con le <strong>PMI B2B</strong> che vogliono un'identità chiara
+        e una presenza digitale che funziona davvero.
+        Dalla strategia all'esecuzione: <strong>una testa, non mille fornitori.</strong>
+      </p>
+      <div class="hero-cta">
+        <a href="#progetti" class="btn-primary">Guarda i progetti</a>
+        <a href="#contatto" class="btn-secondary">Parliamoci</a>
+      </div>
     </div>
   </div>
 </div>
@@ -952,7 +1090,7 @@
       Visione sistemica: dall'identità alle ads, tutto coerente.
       </p>
       <p class="differenziale-sub">
-        Molte PMI si rivolgono a un'agenzia per la strategia, a un freelance per il logo, a qualcun altro per il sito. Il risultato è frammentato. Io lavoro su tutto il sistema — con un'unica visione strategica.
+        Molte PMI si rivolgono a un'agenzia per la strategia, a un freelance per il logo, a qualcun altro per il sito. Il risultato è frammentato. Io lavoro su tutto il sistema — con un'unica regia strategica.
       </p>
     </div>
   </div>
@@ -962,7 +1100,7 @@
       <span class="skill-tag-dark">Brand strategy</span>
       <span class="skill-tag-dark">Positioning</span>
       <span class="skill-tag-dark">Visual identity</span>
-      <span class="skill-tag-dark">Website design &amp; development</span>
+      <span class="skill-tag-dark">Website design</span>
       <span class="skill-tag-dark">Digital strategy</span>
       <span class="skill-tag-dark">Content strategy</span>
       <span class="skill-tag-dark">Copywriting</span>
@@ -984,8 +1122,8 @@
       <p class="approccio-text">
         Prima di qualsiasi output visivo o testuale, capisco il business.
         Chi sei, chi sono i tuoi clienti, come ti posizioni rispetto ai competitor,
-        cosa ti rende diverso. Il risultato è un documento strategico che orienta
-        tutto ciò che segue.
+        cosa ti rende diverso. È il brand audit: un documento strategico
+        che orienta tutto ciò che segue.
       </p>
     </div>
     <div class="approccio-item">
@@ -1027,6 +1165,8 @@
   <div class="progetti-grid">
 
     <a href="onthecloud-srl.html" class="project-card fade-in">
+      <img class="project-hero-img" src="assets/img/milanoabitare/000-hero.png" alt="" loading="lazy" aria-hidden="true">
+      <div class="project-inner">
       <div class="project-meta">
         <p class="project-index">01</p>
         <p class="project-date">Giugno 2025</p>
@@ -1050,9 +1190,12 @@
         </div>
       </div>
       <div class="project-arrow">↗</div>
+      </div>
     </a>
 
     <a href="europee-2024.html" class="project-card fade-in">
+      <img class="project-hero-img" src="assets/img/europee/01-hero.jpg" alt="" loading="lazy" aria-hidden="true">
+      <div class="project-inner">
       <div class="project-meta">
         <p class="project-index">02</p>
         <p class="project-date">Giugno 2024</p>
@@ -1072,13 +1215,16 @@
           <span class="tag">Meta ads</span>
         </div>
         <div class="project-outcome">
-          <strong>1.822 preferenze</strong>&nbsp;— risultato superiore alle aspettative, con budget limitato
+          <strong>1.822 preferenze</strong>&nbsp;- risultato superiore alle aspettative, con budget limitato
         </div>
       </div>
       <div class="project-arrow">↗</div>
+      </div>
     </a>
 
     <a href="milano-abitare.html" class="project-card fade-in">
+      <img class="project-hero-img" src="assets/img/milanoabitare/000-hero.png" alt="" loading="lazy" aria-hidden="true">
+      <div class="project-inner">
       <div class="project-meta">
         <p class="project-index">03</p>
         <p class="project-date">Giugno 2024</p>
@@ -1101,6 +1247,7 @@
         </div>
       </div>
       <div class="project-arrow">↗</div>
+      </div>
     </a>
 
   </div>
@@ -1151,10 +1298,9 @@
   <div class="about-grid">
     <div class="about-pro fade-in">
       <p>
-        Sono un designer della comunicazione con una formazione al Politecnico di Milano
-        e un'inclinazione sempre più marcata verso la strategia. Mi occupo di quello
-        che viene prima: prima del post su Linkedin,
-        prima del sito, prima del copy dell'ad.
+        Sono uno strategist della comunicazione, formato in design
+        al Politecnico di Milano. Mi occupo di quello che viene prima:
+        prima del post su LinkedIn, prima del sito, prima del copy dell'ad.
       </p>
       <p>
         A chi ci rivolgiamo? Di cosa hanno bisogno? Come li raggiungiamo?
@@ -1219,17 +1365,18 @@
     </div>
 
     <div class="about-personal fade-in" style="transition-delay:0.1s">
+      <img class="about-personal-img" src="assets/img/DSCF2057.JPG" alt="Davide Valentini" loading="lazy" aria-hidden="true">
       <p class="about-personal-label">Oltre il lavoro</p>
       <p>
-        Sono una persona estremamente curiosa — entro su Wikipedia
+        Sono una persona estremamente curiosa, entro su Wikipedia
         per cercare una cosa e riemergo un'ora dopo. Amo viaggiare, rigorosamente
-        in posti nuovi: il conteggio dei luoghi visitati è una metrica che prendo
+        in posti nuovi: il conteggio dei luoghi visitati è una metrica che prendo anche troppo
         sul serio. Adoro scoprire nuove culture e pianificare meticolosamente gli itinerari, dove scatterò fotografie che poi raramente pubblico.
       </p>
       <p>
         Meglio non iniziare una conversazione di politica con me. Ma se l'interesse
         fosse comune, possiamo parlare di economia politica, di storia contemporanea
-        e di ideologie per ore. Tifoso del Milan — cresciuto con Kakà e Sheva —
+        e di ideologie per ore. Tifoso del Milan - cresciuto con Kakà e Sheva -
         appassionato di calcio e di fantacalcio, dove mi piace mettere in campo la mia mentalità analitica e strategica.
       </p>
       <!--<p style="margin-top:1.25rem; font-size:0.78rem; color:rgba(255,255,255,0.3); font-style:italic;"> Forte pensiero critico e analitico · buona leadership nel teamwork · gestione delle priorità · difetto principale: ansia da palco, ci sto lavorando.
@@ -1255,7 +1402,7 @@
   <span>© 2026 Davide Valentini</span>
   <div class="footer-links">
     <a href="https://linkedin.com/in/d-valentini" target="_blank">LinkedIn</a>
-    <a href="#" onclick="alert('CV disponibile su richiesta — scrivi a hi@davidevalentini.com')">CV</a>
+    <a href="#" onclick="alert('CV disponibile su richiesta - scrivi a hi@davidevalentini.com')">CV</a>
   </div>
 </footer>
 
@@ -1281,7 +1428,15 @@
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('visible');
+      if (e.isIntersecting) {
+        const el = e.target;
+        el.classList.add('visible');
+        // once the staggered entrance has played, drop the leftover delay
+        // so hover reactions on these elements are immediate
+        const d = parseFloat(getComputedStyle(el).transitionDelay) || 0;
+        setTimeout(() => { el.style.transitionDelay = '0s'; }, (d + 0.75) * 1000);
+        observer.unobserve(el);
+      }
     });
   }, { threshold: 0.1 });
 
@@ -1292,6 +1447,67 @@
     el.classList.add('fade-in');
     observer.observe(el);
   });
+
+  /* ── Hero interactions ── */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  // Enable non-hero motion interactions (magnetic tags) unless reduced motion
+  if (!reduceMotion) {
+    document.documentElement.classList.add('has-motion');
+  }
+
+  // Custom cursor: square follows tightly, ring trails behind (desktop + motion only)
+  if (finePointer && !reduceMotion) {
+    document.documentElement.classList.add('has-custom-cursor');
+    const ring = document.getElementById('cur-ring');
+    const dot = document.getElementById('cur-dot');
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2;   // pointer target
+    let rx = mx, ry = my;                                          // ring (lagging)
+    let shown = false;
+    window.addEventListener('mousemove', (e) => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+      if (!shown) { shown = true; ring.classList.add('ready'); dot.classList.add('ready'); }
+    });
+    const clickable = 'a, button, .skill-tag-dark, .project-card, .target-list li, .contact-email, [role="button"]';
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(clickable)) document.documentElement.classList.add('cursor-active');
+    });
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest(clickable) && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(clickable)))
+        document.documentElement.classList.remove('cursor-active');
+    });
+    (function loop() {
+      rx += (mx - rx) * 0.24; ry += (my - ry) * 0.24;   // trailing drag
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  // Magnetic skill tags in the "differenziale" section
+  if (finePointer && !reduceMotion) {
+    const strip = document.querySelector('.skills-strip-dark');
+    if (strip) {
+      const tags = Array.from(strip.querySelectorAll('.skill-tag-dark'));
+      const RANGE = 120, MAX = 9;
+      strip.addEventListener('mousemove', (e) => {
+        tags.forEach(t => {
+          const r = t.getBoundingClientRect();
+          const dx = e.clientX - (r.left + r.width / 2);
+          const dy = e.clientY - (r.top + r.height / 2);
+          const dist = Math.hypot(dx, dy) || 1;
+          if (dist < RANGE) {
+            const f = (1 - dist / RANGE) * MAX;
+            t.style.transform = 'translate(' + (dx / dist * f) + 'px,' + (dy / dist * f) + 'px)';
+          } else {
+            t.style.transform = '';
+          }
+        });
+      });
+      strip.addEventListener('mouseleave', () => tags.forEach(t => { t.style.transform = ''; }));
+    }
+  }
 </script>
 </body>
 </html>
