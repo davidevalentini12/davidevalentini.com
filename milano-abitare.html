@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Milano Abitare — Davide Valentini</title>
+<meta name="description" content="Milano Abitare, case study di Davide Valentini: target research e strategia di comunicazione. Il vero pubblico non cerca casa, ce l'ha e teme di affittarla.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #FFFFFF;
+    --bg: #F5F7F7;
+    --light: #E5EAE8;
+    --accent-mid: #009999;
+    --accent: #017878;
+    --dark: #112B2B;
+    --darkest: #001111;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans-head: 'Inter Tight', system-ui, sans-serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --max: 1120px;
+    --gutter: clamp(1.5rem, 5vw, 4rem);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--darkest);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV (shared with index) ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem var(--gutter);
+    background: var(--bg);
+    border-bottom: 1px solid var(--light);
+  }
+  .nav-logo {
+    font-family: var(--sans-head);
+    font-size: 1.1rem; font-weight: 400;
+    color: var(--darkest); text-decoration: none; letter-spacing: 0.02em;
+  }
+  .nav-logo .logo-bold { font-weight: 700; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--sans-head); font-size: 0.8rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--dark); text-decoration: none;
+    transition: color 0.4s; font-weight: 400;
+  }
+  .nav-links a:hover { color: var(--accent-mid); }
+  .nav-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px; z-index: 101;
+  }
+  .nav-toggle span {
+    display: block; width: 24px; height: 1.5px; background: var(--darkest);
+    transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── FULL-BLEED + CONTAINERS ── */
+  .bleed { width: 100%; }
+  .wrap {
+    max-width: var(--max); margin: 0 auto;
+    padding: clamp(3.5rem, 7vw, 6rem) var(--gutter);
+  }
+
+  /* ── COVER ── */
+  .hero-banner { background: var(--bg); padding-top: 66px; }
+  .hero-banner img { width: 100%; height: auto; display: block; }
+
+  .cover-intro {
+    max-width: var(--max); margin: 0 auto;
+    padding: clamp(2.5rem, 5vw, 4rem) var(--gutter) clamp(1rem, 2vw, 2rem);
+  }
+  .back-link {
+    font-family: var(--sans-head); font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--dark); text-decoration: none;
+    font-weight: 500; display: inline-flex; align-items: center; gap: 0.5rem;
+    margin-bottom: 1.75rem; transition: color 0.3s, gap 0.3s;
+  }
+  .back-link:hover { color: var(--accent); gap: 0.85rem; }
+
+  .cover-label {
+    font-family: var(--serif); font-size: 0.95rem; letter-spacing: 0.03em;
+    color: var(--accent); margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 0.75rem; font-weight: 300;
+  }
+  .cover-label::before {
+    content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent);
+  }
+  .cover-title {
+    font-family: var(--sans-head); font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1.02; letter-spacing: -0.02em; color: var(--darkest); margin-bottom:1.75rem; font-weight: 900;
+  }
+  .cover-title em { font-style: italic; color: var(--accent); }
+
+  .cover-tags {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 0.1rem 0.9rem;
+    margin-bottom: 2rem;
+  }
+  .cover-tags span {
+    font-family: var(--serif); font-size: 1.2rem; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--dark); font-style: italic;
+  }
+  .cover-tags span-highlight {
+    font-family: var(--serif); font-size: 1.2rem; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--accent); font-style: italic;
+    border-bottom: 5px solid var(--light);
+  }
+    .cover-tags i { color: var(--accent); font-style: normal; font-size: 0.6rem; }
+
+  .cover-meta {
+    display: grid; grid-template-columns: repeat(3, auto); gap: 2.5rem;
+    border-top: 1px solid var(--light); padding-top: 1.5rem; margin-top: 0.5rem;
+  }
+  .cover-meta dt {
+    font-family: var(--sans-head); font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 0.4rem;
+  }
+  .cover-meta dd {
+    font-size: 0.85rem; color: var(--dark); font-weight: 400; line-height: 1.45;
+  }
+
+  /* ── SECTION MARKER (00. SFIDA) ── */
+  .marker { display: flex; align-items: baseline; gap: 0.7rem; margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem); }
+  .marker .n {
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: clamp(1.8rem, 3vw, 2.7rem); color: var(--darkest); line-height: 1; flex-shrink: 0;
+  }
+  .marker .t {
+    font-family: var(--sans-head); font-weight: 900; text-transform: uppercase;
+    letter-spacing: -0.02em; font-size: clamp(2.3rem, 7vw, 5rem); line-height: 0.92; color: var(--light);
+  }
+
+  /* ── BODY COPY ── */
+  .body { max-width: 48ch; }
+  .body p { font-size: clamp(0.95rem, 1.05vw, 1.05rem); line-height: 1.85; color: var(--dark); font-weight: 300; }
+  .body p + p { margin-top: 1.1rem; }
+  .body .h { color: var(--accent); font-style: italic; font-weight: 400; }
+  .body b { color: var(--darkest); font-weight: 500; font-style: normal; }
+
+  /* offset two-column copy (Sfida, Insight) */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  .cols .col-b { margin-top: clamp(2rem, 7vw, 5.5rem); }
+  .cols .col-b p {
+    font-size: clamp(0.82rem, 0.9vw, 0.88rem);
+    line-height: 1.6;
+    font-weight: 500;
+    color: var(--dark);
+  }
+
+  /* ── FIGURES ── */
+  .fig { margin-top: clamp(2.5rem, 5vw, 4rem); }
+  .fig img { width: 100%; height: auto; display: block; }
+  .fig + .fig { margin-top: clamp(1.25rem, 2.5vw, 2rem); }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); margin-top: clamp(2.5rem, 5vw, 4rem); }
+  .cards img { width: 100%; height: auto; display: block; }
+
+  /* ── MEDIA CONTAINERS ── */
+  .band-dark .band-inner {
+    max-width: var(--max); margin: 0 auto;
+    padding: clamp(2.5rem, 5vw, 4.5rem) var(--gutter);
+  }
+  .band-dark img { width: 100%; height: auto; display: block; }
+
+  .full-bleed img { width: 100%; height: auto; display: block; }
+
+  .wrap-media {
+    max-width: var(--max); margin: 0 auto;
+    padding: clamp(2.5rem, 5vw, 4.5rem) var(--gutter);
+  }
+  .wrap-media img { width: 100%; height: auto; display: block; }
+
+  .phones-overlap {
+    margin-top: clamp(-8rem, -6vw, -3rem);
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── CLOSING CTA ── */
+  .closing { margin: 0 auto; padding: clamp(4rem, 8vw, 7rem) var(--gutter); text-align: center; background: var(--accent-mid)}
+  .closing p {
+    font-family: var(--serif); font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+    line-height: 1.35; color: var(--white); max-width: 22ch; margin: 0 auto 2.25rem;
+  }
+  .closing p em { font-style: italic; color: var(--darkest); }
+  .cta-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--dark); color: var(--white); text-decoration: none;
+    padding: 0.85rem 2rem; font-family: var(--sans-head); font-size: 0.78rem;
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); color:  var(--light)}
+
+  .btn-secondary {
+    background: transparent; color: var(--dark); text-decoration: none;
+    padding: 0.85rem 2rem; font-family: var(--sans-head); font-size: 0.78rem;
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+    border: 1.5px solid var(--dark); transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── FOOTER (shared with index) ── */
+  footer {
+    padding: 2rem var(--gutter); display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--light); max-width: var(--max); margin: 0 auto;
+    font-family: var(--sans-head); font-size: 0.75rem; color: rgba(17,43,43,0.35); font-weight: 300;
+  }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: rgba(17,43,43,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── FADE IN ── */
+  .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--bg); flex-direction: column; align-items: center; justify-content: center;
+      gap: 2.5rem; z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 1.1rem; }
+
+    .cols { grid-template-columns: 1fr; gap: 1.5rem; }
+    .cols .col-b { margin-top: 0; }
+    .cards { grid-template-columns: 1fr; }
+    .cover-meta { grid-template-columns: 1fr; gap: 1.25rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .marker .t { font-size: clamp(2.6rem, 13vw, 4rem); }
+  }
+</style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R4BNDDLEW3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R4BNDDLEW3');
+</script>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">davide<span class="logo-bold">Valentini</span></a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html#approccio">Approccio</a></li>
+    <li><a href="index.html#progetti">Progetti</a></li>
+    <li><a href="index.html#about">Chi sono</a></li>
+    <li><a href="index.html#contatto">Contatto</a></li>
+  </ul>
+</nav>
+
+<!-- COVER BANNER -->
+<div class="hero-banner fade-in">
+  <img src="assets/img/milanoabitare/000-hero.png" alt="Banner progetto Milano Abitare — Non una promessa ma una garanzia">
+</div>
+
+<!-- COVER INTRO -->
+<header class="cover-intro fade-in">
+  <a href="index.html#progetti" class="back-link">← Tutti i progetti</a>
+  <p class="cover-label">Giugno 2024</p>
+  <h1 class="cover-title">Milano <em>Abitare</em></h1>
+  <div class="cover-tags">
+    <span-highlight>Digital Strategy</span-highlight><i>✦</i>
+    <span>Target Research</span><i>✦</i>
+    <span>Brand Storytelling</span><i>✦</i>
+    <span>Content Strategy</span>
+  </div>
+  <dl class="cover-meta">
+    <div><dt>Ruolo</dt><dd>Direzione strategica e creativa</dd></div>
+    <div><dt>Cliente</dt><dd>Milano Abitare<br>Iniziativa Comune di Milano</dd></div>
+    <div><dt>Periodo</dt><dd>Febbraio – Giugno 2024<br>Progetto universitario Polimi, team di 6</dd></div>
+  </dl>
+</header>
+
+<!-- 00 SFIDA -->
+<section class="wrap fade-in" style="padding-bottom: clamp(2rem,4vw,3rem);">
+  <div class="marker"><span class="n">00.</span><span class="t">Sfida</span></div>
+  <div class="cols">
+    <div class="body col-a">
+      <p>Corso di Digital Strategy, un team di sei: scegliamo <b>Milano Abitare</b> — il programma del Comune contro il caro affitti — e ne prendo la regia, dall'analisi alle grafiche finali. Il programma esiste, gli strumenti pure, ma la partecipazione è bassa. La domanda di partenza: <span class="h">quali audience coinvolgere, e con quale strategia?</span></p>
+    </div>
+    <div class="body col-b">
+      <p>Il brief non chiedeva di vendere di più, ma qualcosa di più scomodo: <span class="h">capire con chi parlare</span>. È la logica di ogni brand, sociale o commerciale — quando il pubblico giusto non è ovvio, trovarlo è già metà della strategia.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- GALLERY (full-bleed) -->
+<div class="full-bleed fade-in">
+  <img src="assets/img/milanoabitare/00-sfida.png" alt="XXX">
+</div>
+
+<!-- 01 CONTESTO -->
+<section class="wrap fade-in">
+  <div class="marker"><span class="n">01.</span><span class="t">Contesto</span></div>
+  <div class="body">
+    <p>A Milano la domanda di case è altissima e l'offerta scarsa, eppure <b>migliaia di case restano sfitte</b>: a bloccare l'offerta sono i proprietari, che non affittano per paura. <span class="h">Le paure sono sempre le stesse</span> — l'inquilino che non paga e non se ne va, le tasse comunque dovute, le spese burocratiche, la messa a norma. E allora: <span class="h">chi risponde a queste paure?</span></p>
+  </div>
+  <div class="fig">
+    <img src="assets/img/milanoabitare/01-paure.png" alt="Le paure del proprietario che frenano l'affitto: morosità, tasse, spese burocratiche, messa a norma">
+  </div>
+</section>
+
+<!-- 02 INSIGHT -->
+<section class="wrap fade-in">
+  <div class="marker"><span class="n">02.</span><span class="t">Insight</span></div>
+  <div class="body">
+    <p>Il vero pubblico non è chi cerca casa, ma <span class="h">chi una casa ce l'ha e ha paura di affittarla</span> — e quelle paure <b>hanno già una risposta</b> nell'offerta di Milano Abitare: garanzia sulla morosità, contributi su ristrutturazione e procedure. Il problema non è il prodotto, è <span class="h">la percezione e la fiducia</span>; e la percezione non si cambia con un nuovo servizio, si cambia con la comunicazione.</p>
+  </div>
+  <div class="fig">
+    <img src="assets/img/milanoabitare/02-paure-risposte.png" alt="Le paure dei proprietari e le risposte concrete di Milano Abitare: garanzia morosità, agevolazioni fiscali, contributi — sicurezza">
+  </div>
+  <div class="fig">
+    <img src="assets/img/milanoabitare/02-benchmark.png" alt="Mappa di posizionamento: i competitor schiacciati sul guadagno, Milano Abitare sola nel territorio della sicurezza">
+  </div>
+</section>
+
+<!-- 03 OBIETTIVI -->
+<section class="wrap fade-in">
+  <div class="marker"><span class="n">03.</span><span class="t">Obiettivi</span></div>
+  <div class="body">
+    <p>Sul <b>guadagno</b> i competitor vincono; sulla <span class="h">sicurezza</span> — contributi, garanzie, tutele — non esistono, e quel vuoto diventa il posizionamento. Il target si restringe ai proprietari scettici, divisi in due profili: <b>chi diffida degli inquilini</b>, che vuole tutela individuale, e <b>chi è attento al sociale</b>, che la stessa tutela la lega a un beneficio collettivo. Stesso messaggio, due linguaggi.</p>
+  </div>
+  <div class="fig">
+    <img src="assets/img/milanoabitare/03-personas.png" alt="Le due personas dei proprietari: Giacomo, che diffida degli inquilini, e Anna, attenta al sociale">
+  </div>
+</section>
+
+<!-- 04 IDEAZIONE -->
+<section class="wrap fade-in" style="padding-bottom: clamp(2rem,4vw,3rem);">
+  <div class="marker"><span class="n">04.</span><span class="t">Ideazione</span></div>
+  <div class="cols">
+    <div class="body col-a">
+      <p>Il differenziale diventa concept: <span class="h">«Non una promessa, ma una garanzia»</span>. Il meccanismo si ribalta su ogni formato — la paura del proprietario si fa <b>domanda</b>, la tutela di Milano Abitare si fa <b>risposta</b> — e si declina in due <b>user journey</b>: stessa promessa, paure e canali diversi per cluster.</p>
+    </div>
+    <div class="body col-b">
+      <p><b>Chi diffida degli inquilini</b> riceve un tono diretto, leva sulla tutela individuale; <b>chi è attento al sociale</b> un tono valoriale, leva sull'impatto collettivo.</p>
+    </div>
+  </div>
+  <div class="fig fade-in">
+    <img src="assets/img/milanoabitare/04-concept-com.png" alt="Il pivot del concept: dai termini negativi (timore, rischio, seccatura) alla garanzia">
+  </div>
+  <div class="fig fade-in">
+    <img src="assets/img/milanoabitare/04-user-journey.png" alt="Le due user journey differenziate per cluster: stesso messaggio, canali diversi, stesso arrivo agli uffici">
+  </div>
+</section>
+
+
+
+
+<!-- 05 RESTITUZIONE -->
+<section class="wrap fade-in" style="padding-bottom: clamp(2rem,4vw,3rem);">
+  <div class="marker"><span class="n">05.</span><span class="t">Restituzione</span></div>
+  <div class="body">
+    <p>Il concept si declina su tutti i canali dei due percorsi — social, display, organico, sito, newsletter — con un <b>media mix differenziato</b> e un piano editoriale calendarizzato. Il deliverable è un <b>documento strategico completo</b>, ma il valore vero è la <span class="h">coerenza</span>: una sola idea che regge dall'insight all'ultimo annuncio, come quando a guidare c'è <b>una testa sola</b>.</p>
+  </div>
+  <div class="fig fade-in">
+    <img src="assets/img/milanoabitare/05-mockups.png" alt="Il profilo Facebook, il profilo Instagram e il piano editoriale.">
+  </div>
+</section>
+
+
+
+<div class="full-bleed fade-in">
+  <img src="assets/img/milanoabitare/05-mockups-b.png" alt="Il concept 'Milano Abitare non promette, Milano Abitare garantisce' e il mockup di advertising su diversi touchpoint.">
+</div>
+
+<div class="full-bleed fade-in">
+  <img src="assets/img/milanoabitare/05-mockups-c.png" alt="Il mockup del nuovo sito di Milano Abitare.">
+</div>
+
+<!-- CLOSING -->
+<section class="closing fade-in">
+  <p>Il pubblico giusto aveva <em>paura di affittare.</em></p>
+  <div class="cta-row">
+    <a href="index.html#progetti" class="btn-secondary">← Tutti i progetti</a>
+    <a href="index.html#contatto" class="btn-primary">Parliamoci</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Davide Valentini</span>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/d-valentini" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="#" onclick="alert('CV disponibile su richiesta — scrivi a hi@davidevalentini.com'); return false;">CV</a>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+      document.body.style.overflow = '';
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
