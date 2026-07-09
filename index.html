@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Davide Valentini — Brand & Communication Strategist</title>
 <meta name="description" content="Davide Valentini, Brand & Communication Strategist. Strategia, identità, comunicazione e marketing digitale per PMI B2B: una testa, non mille fornitori.">
@@ -1023,16 +1023,94 @@
   ]
 }
 </script>
+
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-R4BNDDLEW3"></script>
+<!-- CONSENSO COOKIE + GOOGLE ANALYTICS (caricato solo dopo consenso) -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+(function () {
+  var KEY = 'dv-consent';
+  var TTL = 31536000000; /* 12 mesi */
 
-  gtag('config', 'G-R4BNDDLEW3');
+  function loadGA() {
+    if (window.__dvGaLoaded) return;
+    window.__dvGaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R4BNDDLEW3';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-R4BNDDLEW3');
+  }
+
+  function saved() {
+    try {
+      var c = JSON.parse(localStorage.getItem(KEY));
+      if (c && (Date.now() - c.t) < TTL) return c.v;
+    } catch (e) {}
+    return null;
+  }
+  function save(v) {
+    try { localStorage.setItem(KEY, JSON.stringify({ v: v, t: Date.now() })); } catch (e) {}
+  }
+
+  function closeBanner() {
+    var b = document.getElementById('dv-cookie-banner');
+    if (b) b.remove();
+  }
+
+  function showBanner() {
+    if (document.getElementById('dv-cookie-banner')) return;
+    var b = document.createElement('div');
+    b.id = 'dv-cookie-banner';
+    b.setAttribute('role', 'dialog');
+    b.setAttribute('aria-label', 'Preferenze cookie');
+    b.innerHTML =
+      '<style>' +
+      '#dv-cookie-banner{position:fixed;left:1rem;bottom:1rem;z-index:9000;max-width:22rem;' +
+      'background:#001111;color:#F5F7F7;padding:1.25rem 1.4rem;' +
+      "font-family:'Inter',system-ui,sans-serif;font-size:0.85rem;line-height:1.55;font-weight:300;" +
+      'box-shadow:0 8px 30px rgba(0,17,17,0.25);}' +
+      '#dv-cookie-banner p{margin:0 0 0.9rem;}' +
+      '#dv-cookie-banner a{color:#009999;text-decoration:underline;}' +
+      '#dv-cookie-banner .dv-cb-row{display:flex;gap:0.6rem;}' +
+      '#dv-cookie-banner button{flex:1;cursor:pointer;padding:0.6rem 0;' +
+      "font-family:'Inter Tight',system-ui,sans-serif;font-size:0.7rem;letter-spacing:0.08em;" +
+      'text-transform:uppercase;font-weight:500;background:transparent;color:#F5F7F7;' +
+      'border:1.5px solid #F5F7F7;transition:border-color 0.2s,color 0.2s;}' +
+      '#dv-cookie-banner button:hover{border-color:#009999;color:#009999;}' +
+      '@media (max-width:600px){#dv-cookie-banner{left:0.75rem;right:0.75rem;max-width:none;}}' +
+      '</style>' +
+      '<p>Uso Google Analytics per capire come viene visitato il sito. Parte solo se accetti - nessun altro cookie. <a href="privacy.html">Dettagli</a></p>' +
+      '<div class="dv-cb-row">' +
+      '<button type="button" id="dv-cb-no">Rifiuta</button>' +
+      '<button type="button" id="dv-cb-yes">Accetta</button>' +
+      '</div>';
+    document.body.appendChild(b);
+    document.getElementById('dv-cb-yes').addEventListener('click', function () {
+      save('yes'); closeBanner(); loadGA();
+    });
+    document.getElementById('dv-cb-no').addEventListener('click', function () {
+      save('no'); closeBanner();
+    });
+  }
+
+  window.dvOpenConsent = function (e) {
+    if (e) e.preventDefault();
+    showBanner();
+  };
+
+  var choice = saved();
+  if (choice === 'yes') { loadGA(); }
+  else if (choice === null) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', showBanner);
+    } else { showBanner(); }
+  }
+})();
 </script>
 
 <body>
@@ -1170,8 +1248,8 @@
 
   <div class="progetti-grid">
 
-    <a class="project-card fade-in">
-      <img class="project-hero-img" src="assets/img/onthecloud/000-temporaneo.png" alt="" loading="lazy" aria-hidden="true">
+    <a href="onthecloud.html" class="project-card fade-in">
+      <img class="project-hero-img" src="assets/img/onthecloud/000-hero.png" alt="" loading="lazy" aria-hidden="true">
       <div class="project-inner">
       <div class="project-meta">
         <p class="project-index">01</p>
@@ -1180,19 +1258,21 @@
       <div class="project-content">
         <h3 class="project-title">OnTheCloud Srl</h3>
         <p class="project-hook">
-          Brand identity da zero, strategia di marketing digitale e campagne ads
-          per una PMI ICT B2B. Unico responsabile della comunicazione per 4 mesi,
-          senza figure senior di riferimento.
+          Brand strategy, identità visiva e tono di voce da zero, design system
+          alla base del nuovo sito e campagne di lead generation per una PMI ICT B2B.
+          Quattro mesi alla guida di marketing e comunicazione: dalla richiesta di
+          "più lead, subito" a un sistema completo di acquisizione.
         </p>
         <div class="project-tags">
           <span class="tag accent">ICT B2B</span>
+          <span class="tag">Brand strategy</span>
           <span class="tag">Brand identity</span>
           <span class="tag">Digital strategy</span>
           <span class="tag">LinkedIn &amp; Meta ads</span>
-          <span class="tag">Website direction</span>
+          <span class="tag">Lead generation</span>
         </div>
         <div class="project-outcome">
-          <strong>Sistema completo:</strong>&nbsp;da nessuna identità a brand operativo su tutti i canali digitali
+          <strong>Sistema completo:</strong>&nbsp;da nessuna identità a brand e funnel operativi su tutti i canali digitali
         </div>
       </div>
       <div class="project-arrow">↗</div>
@@ -1221,7 +1301,7 @@
           <span class="tag">Meta ads</span>
         </div>
         <div class="project-outcome">
-          <strong>1.822 preferenze</strong>&nbsp;- risultato superiore alle aspettative, con budget limitato
+          <strong>1.822 preferenze:</strong>&nbsp;risultato superiore alle aspettative, con budget limitato
         </div>
       </div>
       <div class="project-arrow">↗</div>
@@ -1277,7 +1357,7 @@
     <ul class="target-list fade-in">
       <li>
         <strong>PMI B2B italiane, 5–30 dipendenti</strong>
-        Settori ICT, professional services, manifattura di nicchia.
+        Soprattutto IT e servizi professionali: consulenza, studi legali e contabili, architettura, ingegneria.
         Aziende con un'offerta solida ma una presenza digitale che non la rispecchia.
       </li>
       <li>
@@ -1408,7 +1488,9 @@
   <span>© 2026 Davide Valentini</span>
   <div class="footer-links">
     <a href="https://linkedin.com/in/d-valentini" target="_blank">LinkedIn</a>
-    <a href="#" onclick="alert('CV disponibile su richiesta - scrivi a hi@davidevalentini.com')">CV</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="#" onclick="dvOpenConsent(event)">Cookie</a>
+    <a href="#" onclick="alert('CV disponibile su richiesta — scrivi a hi@davidevalentini.com'); return false;">CV</a>
   </div>
 </footer>
 

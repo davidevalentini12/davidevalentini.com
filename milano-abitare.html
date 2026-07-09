@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
+<link rel="apple-touch-icon" href="assets/img/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Milano Abitare — Davide Valentini</title>
 <meta name="description" content="Milano Abitare, case study di Davide Valentini: target research e strategia di comunicazione. Il vero pubblico non cerca casa, ce l'ha e teme di affittarla.">
@@ -300,16 +300,94 @@
   }
 }
 </script>
+
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-R4BNDDLEW3"></script>
+<!-- CONSENSO COOKIE + GOOGLE ANALYTICS (caricato solo dopo consenso) -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+(function () {
+  var KEY = 'dv-consent';
+  var TTL = 31536000000; /* 12 mesi */
 
-  gtag('config', 'G-R4BNDDLEW3');
+  function loadGA() {
+    if (window.__dvGaLoaded) return;
+    window.__dvGaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R4BNDDLEW3';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-R4BNDDLEW3');
+  }
+
+  function saved() {
+    try {
+      var c = JSON.parse(localStorage.getItem(KEY));
+      if (c && (Date.now() - c.t) < TTL) return c.v;
+    } catch (e) {}
+    return null;
+  }
+  function save(v) {
+    try { localStorage.setItem(KEY, JSON.stringify({ v: v, t: Date.now() })); } catch (e) {}
+  }
+
+  function closeBanner() {
+    var b = document.getElementById('dv-cookie-banner');
+    if (b) b.remove();
+  }
+
+  function showBanner() {
+    if (document.getElementById('dv-cookie-banner')) return;
+    var b = document.createElement('div');
+    b.id = 'dv-cookie-banner';
+    b.setAttribute('role', 'dialog');
+    b.setAttribute('aria-label', 'Preferenze cookie');
+    b.innerHTML =
+      '<style>' +
+      '#dv-cookie-banner{position:fixed;left:1rem;bottom:1rem;z-index:9000;max-width:22rem;' +
+      'background:#001111;color:#F5F7F7;padding:1.25rem 1.4rem;' +
+      "font-family:'Inter',system-ui,sans-serif;font-size:0.85rem;line-height:1.55;font-weight:300;" +
+      'box-shadow:0 8px 30px rgba(0,17,17,0.25);}' +
+      '#dv-cookie-banner p{margin:0 0 0.9rem;}' +
+      '#dv-cookie-banner a{color:#009999;text-decoration:underline;}' +
+      '#dv-cookie-banner .dv-cb-row{display:flex;gap:0.6rem;}' +
+      '#dv-cookie-banner button{flex:1;cursor:pointer;padding:0.6rem 0;' +
+      "font-family:'Inter Tight',system-ui,sans-serif;font-size:0.7rem;letter-spacing:0.08em;" +
+      'text-transform:uppercase;font-weight:500;background:transparent;color:#F5F7F7;' +
+      'border:1.5px solid #F5F7F7;transition:border-color 0.2s,color 0.2s;}' +
+      '#dv-cookie-banner button:hover{border-color:#009999;color:#009999;}' +
+      '@media (max-width:600px){#dv-cookie-banner{left:0.75rem;right:0.75rem;max-width:none;}}' +
+      '</style>' +
+      '<p>Uso Google Analytics per capire come viene visitato il sito. Parte solo se accetti - nessun altro cookie. <a href="privacy.html">Dettagli</a></p>' +
+      '<div class="dv-cb-row">' +
+      '<button type="button" id="dv-cb-no">Rifiuta</button>' +
+      '<button type="button" id="dv-cb-yes">Accetta</button>' +
+      '</div>';
+    document.body.appendChild(b);
+    document.getElementById('dv-cb-yes').addEventListener('click', function () {
+      save('yes'); closeBanner(); loadGA();
+    });
+    document.getElementById('dv-cb-no').addEventListener('click', function () {
+      save('no'); closeBanner();
+    });
+  }
+
+  window.dvOpenConsent = function (e) {
+    if (e) e.preventDefault();
+    showBanner();
+  };
+
+  var choice = saved();
+  if (choice === 'yes') { loadGA(); }
+  else if (choice === null) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', showBanner);
+    } else { showBanner(); }
+  }
+})();
 </script>
 
 <body>
@@ -388,7 +466,7 @@
 <section class="wrap fade-in">
   <div class="marker"><span class="n">02.</span><span class="t">Insight</span></div>
   <div class="body">
-    <p>Il vero pubblico non è chi cerca casa, ma <span class="h">chi una casa ce l'ha e ha paura di affittarla</span> — e quelle paure <b>hanno già una risposta</b> nell'offerta di Milano Abitare: garanzia sulla morosità, contributi su ristrutturazione e procedure. Il focus del problema passa dal prodotto <span class="h">alla percezione e alla fiducia</span>, aspetti che si si cambiano con la comunicazione.</p>
+    <p>Il vero pubblico non è chi cerca casa, ma <span class="h">chi una casa ce l'ha e ha paura di affittarla</span> — e quelle paure <b>hanno già una risposta</b> nell'offerta di Milano Abitare: garanzia sulla morosità, contributi su ristrutturazione e procedure. Il focus del problema passa dal prodotto <span class="h">alla percezione e alla fiducia</span>, aspetti che si cambiano con la comunicazione.</p>
   </div>
   <div class="fig">
     <img src="assets/img/milanoabitare/02-paure-risposte.png" alt="Le paure dei proprietari e le risposte concrete di Milano Abitare: garanzia morosità, agevolazioni fiscali, contributi — sicurezza">
@@ -465,7 +543,9 @@
 <footer>
   <span>© 2026 Davide Valentini</span>
   <div class="footer-links">
-    <a href="https://linkedin.com/in/d-valentini" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://linkedin.com/in/d-valentini" target="_blank">LinkedIn</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="#" onclick="dvOpenConsent(event)">Cookie</a>
     <a href="#" onclick="alert('CV disponibile su richiesta — scrivi a hi@davidevalentini.com'); return false;">CV</a>
   </div>
 </footer>
