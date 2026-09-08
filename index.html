@@ -1000,30 +1000,74 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Davide Valentini",
-  "url": "https://davidevalentini.com",
-  "image": "https://davidevalentini.com/assets/img/DV-Headshot.png",
-  "jobTitle": "Brand & Communication Strategist",
-  "email": "hi@davidevalentini.com",
-  "vatID": "IT03097120996",
-  "description": "Strategist della comunicazione per PMI B2B italiane. Brand, strategia e marketing digitale in un'unica regia.",
-  "knowsAbout": [
-    "Brand strategy",
-    "Positioning",
-    "Comunicazione B2B",
-    "Marketing digitale",
-    "Visual identity",
-    "Content strategy",
-    "LinkedIn & Meta ads"
-  ],
-  "alumniOf": {
-    "@type": "CollegeOrUniversity",
-    "name": "Politecnico di Milano"
-  },
-  "sameAs": [
-    "https://www.linkedin.com/in/d-valentini",
-    "https://www.malt.com/profile/davidevalentini"
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://davidevalentini.com/#organization",
+      "name": "Davide Valentini",
+      "alternateName": "davideValentini",
+      "url": "https://davidevalentini.com/",
+      "logo": "https://davidevalentini.com/assets/img/logo.png",
+      "email": "hi@davidevalentini.com",
+      "vatID": "IT03097120996",
+      "description": "Consulenza di brand strategy e comunicazione per PMI B2B italiane. Una testa sola, dalla strategia all'esecuzione.",
+      "founder": { "@id": "https://davidevalentini.com/#davide" },
+      "areaServed": [
+        { "@type": "AdministrativeArea", "name": "Genova" },
+        { "@type": "AdministrativeArea", "name": "Bolzano" },
+        { "@type": "Country", "name": "Italia" }
+      ],
+      "sameAs": [
+        "https://maps.google.com/?cid=6101859225541918035"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servizi",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand audit e strategia" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Identità visiva e sito web" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content strategy e thought leadership" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Campagne LinkedIn e Meta Ads" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Consulenza continuativa di marketing" } }
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://davidevalentini.com/#davide",
+      "name": "Davide Valentini",
+      "url": "https://davidevalentini.com/",
+      "image": "https://davidevalentini.com/assets/img/DV-Headshot.png",
+      "jobTitle": "Brand & Communication Strategist",
+      "email": "hi@davidevalentini.com",
+      "description": "Strategist della comunicazione per PMI B2B italiane. Brand, strategia e marketing digitale in un'unica regia.",
+      "knowsAbout": [
+        "Brand strategy",
+        "Positioning",
+        "Comunicazione B2B",
+        "Marketing digitale",
+        "Visual identity",
+        "Content strategy",
+        "LinkedIn & Meta ads"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Politecnico di Milano"
+      },
+      "worksFor": { "@id": "https://davidevalentini.com/#organization" },
+      "sameAs": [
+        "https://www.linkedin.com/in/d-valentini",
+        "https://www.malt.com/profile/davidevalentini"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://davidevalentini.com/#website",
+      "url": "https://davidevalentini.com/",
+      "name": "Davide Valentini",
+      "inLanguage": "it-IT",
+      "publisher": { "@id": "https://davidevalentini.com/#organization" }
+    }
   ]
 }
 </script>
