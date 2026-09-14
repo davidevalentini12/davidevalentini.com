@@ -4,15 +4,15 @@
   <url>
     <loc>https://davidevalentini.com/</loc>
     <xhtml:link rel="alternate" hreflang="it" href="https://davidevalentini.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://davidevalentini.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://davidevalentini.com/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://davidevalentini.com/"/>
     <lastmod>2026-09-13</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://davidevalentini.com/en/</loc>
+    <loc>https://davidevalentini.com/en</loc>
     <xhtml:link rel="alternate" hreflang="it" href="https://davidevalentini.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://davidevalentini.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://davidevalentini.com/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://davidevalentini.com/"/>
     <lastmod>2026-09-13</lastmod>
     <priority>1.0</priority>
