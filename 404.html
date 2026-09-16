@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/assets/img/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Pagina non trovata — Davide Valentini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #FFFFFF;
+    --bg: #F5F7F7;
+    --light: #E5EAE8;
+    --accent-mid: #009999;
+    --accent: #017878;
+    --dark: #112B2B;
+    --darkest: #001111;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans-head: 'Inter Tight', system-ui, sans-serif;
+    --sans: 'Inter', system-ui, sans-serif;
+    --max: 1120px;
+    --gutter: clamp(1.5rem, 5vw, 4rem);
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--darkest);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV (shared with index) ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem var(--gutter);
+    background: var(--bg);
+    border-bottom: 1px solid var(--light);
+  }
+
+  .nav-logo {
+    font-family: var(--sans-head);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--darkest);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo .logo-bold { font-weight: 700; }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--sans-head);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dark);
+    text-decoration: none;
+    transition: color 0.4s;
+    font-weight: 400;
+  }
+
+  .nav-links a:hover { color: var(--accent-mid); }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 101;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--darkest);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── LANGUAGE SWITCH ── */
+  .lang-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: stretch;
+    padding: 2px;
+    border: 1px solid var(--light);
+    background: var(--white);
+    line-height: 1;
+    flex-shrink: 0;
+    transition: border-color 0.3s ease;
+  }
+
+  .lang-switch:hover { border-color: var(--accent-mid); }
+
+  .lang-switch-thumb {
+    position: absolute;
+    top: 2px; left: 2px; bottom: 2px;
+    width: calc((100% - 4px) / 2);
+    background: var(--accent);
+    transition: transform 0.42s cubic-bezier(0.2, 0.7, 0.2, 1);
+    will-change: transform;
+  }
+
+  .lang-switch[data-active="en"] .lang-switch-thumb { transform: translateX(100%); }
+
+  .lang-opt {
+    position: relative;
+    z-index: 1;
+    flex: 1 0 auto;
+    min-width: 2.3rem;
+    text-align: center;
+    padding: 0.3rem 0.5rem;
+    font-family: var(--sans-head);
+    font-size: 0.7rem;
+    line-height: 1.15;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--dark);
+    transition: color 0.3s ease;
+  }
+
+  .lang-opt[aria-current] { color: var(--white); }
+  .lang-opt:not([aria-current]):hover { color: var(--accent-mid); }
+
+  .lang-switch[data-active="it"]:has(.lang-opt[data-lang="en"]:hover) .lang-switch-thumb { transform: translateX(20%); }
+  .lang-switch[data-active="en"]:has(.lang-opt[data-lang="it"]:hover) .lang-switch-thumb { transform: translateX(80%); }
+
+  /* ── 404 ── */
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 9rem var(--gutter) 5rem;
+  }
+
+  .sad {
+    font-family: var(--sans-head);
+    font-weight: 900;
+    font-size: clamp(7rem, 26vw, 18rem);
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+    color: var(--darkest);
+    user-select: none;
+  }
+
+  .code {
+    font-family: var(--serif);
+    font-style: normal;
+    font-weight: 400;
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    line-height: 1;
+    letter-spacing: 0.08em;
+    color: var(--darkest);
+    margin-top: 3rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem var(--gutter);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid var(--light);
+    max-width: var(--max);
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .back {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 2px solid rgba(1,120,120,0.3);
+    transition: border-color 0.2s, letter-spacing 0.2s;
+  }
+
+  .back:hover { border-color: var(--accent); letter-spacing: 0.04em; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .nav-right { gap: 1.1rem; }
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      z-index: 99;
+    }
+
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 1.1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lang-switch-thumb { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">davide<span class="logo-bold">Valentini</span></a>
+  <div class="nav-right">
+    <ul class="nav-links" id="nav-links">
+    <li><a href="/#approccio">Approccio</a></li>
+    <li><a href="/#progetti">Progetti</a></li>
+    <li><a href="/#about">Chi sono</a></li>
+    <li><a href="/#contatto">Contatto</a></li>
+    </ul>
+    <div class="lang-switch" data-active="it" role="group" aria-label="Lingua">
+      <span class="lang-switch-thumb" aria-hidden="true"></span>
+      <a class="lang-opt" data-lang="it" href="/" hreflang="it" lang="it" aria-current="true">IT</a>
+      <a class="lang-opt" data-lang="en" href="/en" hreflang="en" lang="en">EN</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+  <p class="sad" aria-label="Faccina triste">:(</p>
+  <p class="code">404</p>
+</main>
+
+<footer>
+  <a href="/" class="back">Torna alla home</a>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+
+</body>
+</html>

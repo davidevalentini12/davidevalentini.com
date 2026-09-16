@@ -1,4 +1,11 @@
+# davidevalentini.com
+# Content Signals (https://contentsignals.org/):
+# search   = indicizzazione e risultati di ricerca
+# ai-input = uso in tempo reale nelle risposte AI (RAG, grounding, agenti)
+# ai-train = addestramento di modelli
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
 Sitemap: https://davidevalentini.com/sitemap.xml

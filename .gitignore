@@ -1,0 +1,31 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Segreti e configurazioni locali
+.env
+.env.*
+*.key
+*.pem
+credentials*.json
+
+# Bozze e lavorazioni (GitHub Pages pubblica tutto)
+_bozze/
+_draft/
+_wip/
+*.draft.html
+*.bak
+*.orig
+
+# Sorgenti di design (non servono online)
+*.psd
+*.ai
+*.sketch
+*.fig
