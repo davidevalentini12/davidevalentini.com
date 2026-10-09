@@ -6,14 +6,14 @@
 <link rel="apple-touch-icon" href="/assets/img/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Servizi per partner — Davide Valentini</title>
-<meta name="description" content="Listino riservato ai partner: audit strategico, identità, contenuti, campagne e continuità mensile.">
+<meta name="description" content="Listino riservato ai partner: il piano tipo anno per anno, con audit strategico, identità, sito, contenuti e campagne.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Davide Valentini">
 <meta property="og:locale" content="it_IT">
 <meta property="og:url" content="https://davidevalentini.com/servizi-partner">
 <meta property="og:title" content="Servizi per partner — Davide Valentini">
-<meta property="og:description" content="Listino riservato ai partner: audit strategico, identità, contenuti, campagne e continuità mensile.">
+<meta property="og:description" content="Listino riservato ai partner: il piano tipo anno per anno, con audit strategico, identità, sito, contenuti e campagne.">
 <meta property="og:image" content="https://davidevalentini.com/assets/img/copertina-sito.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1000">
@@ -21,7 +21,7 @@
 <meta property="og:image:alt" content="Davide Valentini, Brand &amp; Communication Strategist">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Servizi per partner — Davide Valentini">
-<meta name="twitter:description" content="Listino riservato ai partner: audit strategico, identità, contenuti, campagne e continuità mensile.">
+<meta name="twitter:description" content="Listino riservato ai partner: il piano tipo anno per anno, con audit strategico, identità, sito, contenuti e campagne.">
 <meta name="twitter:image" content="https://davidevalentini.com/assets/img/copertina-sito.png">
 <meta name="twitter:image:alt" content="Davide Valentini, Brand &amp; Communication Strategist">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -288,6 +288,40 @@
   }
   .note b { color: var(--darkest); font-weight: 500; }
 
+
+  /* ── PARTNER: piano tipo, opzione consigliata, note in piccolo ── */
+  .plan-wrap {
+    max-width: var(--max); margin: 0 auto;
+    padding: 0 var(--gutter) clamp(2.5rem, 5vw, 3.5rem);
+  }
+  .plan-wrap .fork { margin-top: 0; }
+  .plan-rows { display: flex; flex-direction: column; }
+  .plan-row {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+    padding: 0.6rem 0.85rem; background: var(--white); border-bottom: 1px solid var(--light);
+    font-size: 0.85rem; color: var(--dark); line-height: 1.5;
+  }
+  .plan-row b { font-family: var(--sans-head); font-weight: 600; color: var(--darkest); white-space: nowrap; }
+  .plan-total {
+    display: flex; justify-content: space-between; gap: 1rem;
+    padding: 0.75rem 0.85rem; background: var(--accent); color: var(--white);
+    font-family: var(--sans-head); font-weight: 700; font-size: 0.9rem;
+  }
+  .scale-row.ideal { background: #E3F1F1; box-shadow: inset 3px 0 0 var(--accent); }
+  .scale-row.ideal .scale-price { color: var(--accent); }
+  .scale-row.ideal .scale-desc { color: var(--darkest); }
+  .scale-desc > span:not(.badge) { color: rgba(17,43,43,0.5); font-size: 0.8rem; }
+  .badge {
+    display: inline-block; margin-left: 0.4rem; vertical-align: 0.1em;
+    font-family: var(--sans-head); font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--white); background: var(--accent); padding: 0.12rem 0.5rem;
+  }
+  .fine {
+    margin-top: 0.75rem; font-size: 0.72rem; line-height: 1.6;
+    color: rgba(17,43,43,0.6); font-weight: 300; max-width: 80ch;
+  }
+
   /* ── CLOSING ── */
   .closing {
     background: var(--accent-mid);
@@ -365,11 +399,41 @@
 <header class="page-header fade-in">
   <p class="page-label">Per i partner</p>
   <p class="page-sub">
-    Prezzi riservati ai clienti presentati da un partner. Pacchetti e deliverable sono gli stessi
-    del listino pubblico. Si parte dall'audit strategico; i pacchetti 01–03 si possono concordare
-    insieme fin dall'inizio, con i volumi fissati e le scelte di dettaglio prese dopo l'audit.
+    Prezzi riservati ai clienti presentati da un partner. Si ragiona per anni:
+    il primo costruisce la base, il secondo la porta sul mercato.
   </p>
 </header>
+
+<!-- PIANO TIPO -->
+<section class="plan-wrap fade-in">
+  <p class="phase">Il piano tipo, anno per anno</p>
+  <div class="fork">
+    <div class="branch">
+      <p class="branch-head">Anno 1 — la base</p>
+      <p class="branch-when">Strategia, identità e sito nei primi 6 mesi, poi 6 mesi di contenuti</p>
+      <div class="plan-rows">
+        <div class="plan-row"><span>01 · Audit completo + strategia di brand</span><b>€ 2.500</b></div>
+        <div class="plan-row"><span>02A · Identità visiva</span><b>€ 2.000</b></div>
+        <div class="plan-row"><span>02B · Sito, 5 pagine</span><b>€ 2.500</b></div>
+        <div class="plan-row"><span>03 · Contenuti, 6 mesi</span><b>€ 4.000</b></div>
+        <div class="plan-total"><span>Totale anno 1</span><span>€ 11.000</span></div>
+      </div>
+    </div>
+    <div class="branch">
+      <p class="branch-head">Anno 2 — sul mercato</p>
+      <p class="branch-when">Campagne su Meta per tutto l'anno, contenuti che continuano</p>
+      <div class="plan-rows">
+        <div class="plan-row"><span>04 · Campagne, lancio + 12 mesi di gestione</span><b>€ 8.000</b></div>
+        <div class="plan-row"><span>05 · Continuità contenuti, 12 mesi</span><b>€ 5.000</b></div>
+        <div class="plan-total"><span>Totale anno 2</span><span>€ 13.000</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="fine">
+    Il contributo provinciale per la digitalizzazione copre il 60% della spesa ammessa, fino a 15.000 € di spesa per impresa all'anno,
+    consulenza del partner compresa. Il budget pubblicitario è escluso; l'ammissibilità della gestione campagne va verificata con l'ufficio.
+  </p>
+</section>
 
 <!-- SERVIZI -->
 <div class="servizi-wrap">
@@ -382,12 +446,12 @@
         <p class="pkg-name">Audit completo + strategia di brand</p>
         <p class="pkg-sub">Il punto di partenza — genera tutto il resto</p>
       </div>
-      <span class="pkg-price">€ 2.100–3.000</span>
+      <span class="pkg-price">€ 2.500</span>
       <span class="chevron"></span>
     </div>
     <div class="pkg-body">
       <p class="pkg-desc">
-        Prima di toccare sito, logo o campagne: capire dove si trova l'azienda e dove dovrebbe essere.
+        Prima di toccare sito, logo o contenuti: capire dove si trova l'azienda e dove dovrebbe essere.
         Il deliverable è un <b>documento strategico</b> che mette nero su bianco posizionamento,
         messaggio e tono di voce — la base su cui ogni investimento successivo diventa coerente.
       </p>
@@ -406,11 +470,6 @@
         <div class="item"><span class="code">Messaggio</span><span class="item-text">Identificazione dell'oggetto da comunicare (la promessa)</span></div>
         <div class="item"><span class="code">Tono di voce</span><span class="item-text">Identificazione del modo di comunicare</span></div>
       </div>
-
-      <div class="note">
-        Il documento si chiude con i <b>next steps</b>: le azioni concrete che emergono dall'analisi
-        e che orientano i pacchetti successivi.
-      </div>
     </div>
   </div>
 
@@ -420,195 +479,165 @@
       <span class="pkg-num">02.</span>
       <div class="pkg-info">
         <p class="pkg-name">Identità e presenza</p>
-        <p class="pkg-sub">Visual identity + sito web, acquistabili separatamente</p>
+        <p class="pkg-sub">Identità visiva + sito web, acquistabili separatamente</p>
       </div>
-      <span class="pkg-price">€ 3.800–6.000</span>
+      <span class="pkg-price">€ 4.000–5.500</span>
       <span class="chevron"></span>
     </div>
     <div class="pkg-body">
       <p class="pkg-desc">
         L'identità visiva e il sito traducono la strategia in qualcosa di visibile.
-        Due sotto-pacchetti indipendenti, entrambi derivati dal posizionamento
-        definito nell'audit e orientati alla conversione.
+        Due sotto-pacchetti indipendenti, entrambi derivati dal posizionamento definito nell'audit.
       </p>
 
       <div class="subpkg">
         <div class="subpkg-head">
-          <span class="subpkg-name">Visual identity</span>
-          <span class="subpkg-price">€ 1.700–2.600</span>
+          <span class="subpkg-name">02A · Identità visiva</span>
+          <span class="subpkg-price">€ 2.000</span>
         </div>
         <div class="items">
           <div class="item"><span class="code">Brief</span><span class="item-text">Traduzione del posizionamento in direzione creativa</span></div>
           <div class="item"><span class="code">Design system</span><span class="item-text">Progettazione di logo e brand guidelines</span></div>
-          <div class="item"><span class="code">Materiali</span><span class="item-text">Progettazione di template, profili e materiali ricorrenti</span></div>
+          <div class="item"><span class="code">Materiali</span><span class="item-text">Template, profili social e materiali ricorrenti</span></div>
           <div class="item"><span class="code">Asset foto</span><span class="item-text">Direzione ed editing di asset visivi fotografici <span>(eventuali)</span></span></div>
         </div>
       </div>
 
       <div class="subpkg">
         <div class="subpkg-head">
-          <span class="subpkg-name">Sito web</span>
-          <span class="subpkg-price">€ 2.100–3.400</span>
+          <span class="subpkg-name">02B · Sito web</span>
+          <span class="subpkg-price">€ 2.000–3.500</span>
         </div>
         <div class="items">
           <div class="item"><span class="code">Brief</span><span class="item-text">Definizione di obiettivo, dimensione, architettura</span></div>
           <div class="item"><span class="code">Content</span><span class="item-text">Copy delle pagine scritto per convertire, inclusi 2 case study</span></div>
-          <div class="item"><span class="code">UI</span><span class="item-text">Progettazione estetica coerente con la visual identity</span></div>
+          <div class="item"><span class="code">UI</span><span class="item-text">Progettazione estetica coerente con l'identità visiva</span></div>
           <div class="item"><span class="code">SEO + GEO</span><span class="item-text">Ottimizzazione per motori di ricerca e per AI search <span>(struttura, markup, chiarezza)</span></span></div>
           <div class="item"><span class="code">Upload</span><span class="item-text">Setup di dominio, hosting, contatto, analytics</span></div>
         </div>
       </div>
 
       <div class="scale">
-        <div class="scale-row"><span class="scale-price">€ 2.100</span><span class="scale-desc">Sito 2–3 pagine</span></div>
-        <div class="scale-row"><span class="scale-price">€ 2.700</span><span class="scale-desc">Sito 4–5 pagine (standard B2B)</span></div>
-        <div class="scale-row"><span class="scale-price">€ 3.400</span><span class="scale-desc">6+ pagine + blog</span></div>
+        <div class="scale-row"><span class="scale-price">€ 2.000</span><span class="scale-desc">Sito 2–3 pagine</span></div>
+        <div class="scale-row ideal"><span class="scale-price">€ 2.500</span><span class="scale-desc">Sito 5 pagine: home, chi siamo, servizi/soluzioni, 2 case study <span class="badge">Consigliato</span></span></div>
+        <div class="scale-row"><span class="scale-price">€ 3.500</span><span class="scale-desc">Più di 5 pagine + blog</span></div>
       </div>
+
+      <p class="fine">I case study si scrivono con i dati e i risultati che l'azienda ha a disposizione. E-commerce escluso: su preventivo.</p>
     </div>
   </div>
 
-  <!-- 03 AUTOREVOLEZZA E CREDIBILITÀ -->
+  <!-- 03 CONTENUTI -->
   <div class="pkg fade-in">
     <div class="pkg-header" onclick="togglePkg(this)">
       <span class="pkg-num">03.</span>
       <div class="pkg-info">
         <p class="pkg-name">Autorevolezza e credibilità</p>
-        <p class="pkg-sub">Thought leadership in autonomia — primo mese prodotto come esempio, fino a un anno con il podcast</p>
+        <p class="pkg-sub">Linee guida e formazione per pubblicare in autonomia, più mesi di contenuti prodotti</p>
       </div>
-      <span class="pkg-price">€ 1.900–3.700</span>
+      <span class="pkg-price">€ 2.000–6.500</span>
       <span class="chevron"></span>
     </div>
     <div class="pkg-body">
       <p class="pkg-desc">
-        Un piano di contenuti e delle linee guida pratiche che permettono all'azienda — e, se incluso,
-        al suo fondatore — di pubblicare in autonomia e con continuità, senza competenze specifiche.
-        Il primo mese lo produco io: i contenuti reali, pubblicati, sono l'esempio da cui partire.
+        Le linee guida e la formazione mettono l'azienda — e il titolare — in condizione di pubblicare da soli.
+        Se mancano tempo, voglia o risorse per farlo, i contenuti li produco io, mese per mese.
       </p>
 
-      <p class="phase">Il piano</p>
+      <p class="phase">Linee guida e formazione · € 1.500</p>
       <div class="items">
         <div class="item"><span class="code">Brief</span><span class="item-text">Definizione di frequenza, formati, temi, obiettivi</span></div>
-        <div class="item"><span class="code">Brand plan</span><span class="item-text">Piano editoriale trimestrale del brand</span></div>
-        <div class="item"><span class="code">CEO plan</span><span class="item-text">Piano editoriale trimestrale del CEO/founder <span>(se incluso)</span></span></div>
-        <div class="item"><span class="code">Podcast</span><span class="item-text">Una sessione di registrazione da cui si ricavano 12 episodi, pubblicati uno al mese <span>(versione fino a un anno)</span></span></div>
         <div class="item"><span class="code">Linee guida</span><span class="item-text">Regole pratiche per scrivere e pubblicare in autonomia <span>(temi, formati, esempi, checklist)</span></span></div>
+        <div class="item"><span class="code">Formazione</span><span class="item-text">Sessione con il team su come usarle</span></div>
       </div>
 
-      <p class="phase incluso">1° mese prodotto come esempio</p>
+      <p class="phase incluso">Produzione mensile · € 500 / mese</p>
       <div class="items">
-        <div class="item"><span class="code">Produzione</span><span class="item-text">Copy e creatività dei contenuti del primo mese</span></div>
-        <div class="item"><span class="code">Pubblicazione</span><span class="item-text">Pubblicazione sui canali per il primo mese</span></div>
+        <div class="item"><span class="code">Piano</span><span class="item-text">Piano editoriale del mese</span></div>
+        <div class="item"><span class="code">Azienda</span><span class="item-text">1 contenuto a settimana <span>(post o grafica semplice)</span></span></div>
+        <div class="item"><span class="code">Titolare</span><span class="item-text">1 post testuale a settimana</span></div>
+        <div class="item"><span class="code">Pubblicazione</span><span class="item-text">Pubblicazione sui canali</span></div>
       </div>
 
       <div class="scale">
-        <div class="scale-row"><span class="scale-price">€ 1.900</span><span class="scale-desc">Solo profilo brand</span></div>
-        <div class="scale-row"><span class="scale-price">€ 2.700</span><span class="scale-desc">Brand + profilo CEO/founder</span></div>
-        <div class="scale-row"><span class="scale-price">€ 3.700</span><span class="scale-desc">Brand + profilo CEO/founder, fino a un anno: piano di 12 mesi e podcast in 12 episodi mensili</span></div>
+        <div class="scale-row"><span class="scale-price">€ 2.000</span><span class="scale-desc">Linee guida + 1 mese</span></div>
+        <div class="scale-row ideal"><span class="scale-price">€ 4.000</span><span class="scale-desc">Linee guida + 6 mesi, al prezzo di 5 <span class="badge">Consigliato</span></span></div>
+        <div class="scale-row"><span class="scale-price">€ 6.500</span><span class="scale-desc">Linee guida + 12 mesi, al prezzo di 10 + podcast: una registrazione montata in 12 reel, uno al mese</span></div>
       </div>
 
       <div class="note">
-        Dal secondo mese pubblicate in autonomia seguendo le linee guida; nella versione fino a un anno
-        il podcast copre tutti i 12 mesi. Se preferite delegare il resto, la produzione passa al <b>retainer mensile</b> (pacchetto 05).
+        Il <b>podcast</b> è incluso solo nella formula da 12 mesi presa da subito. A parte costa € 1.000 (registrazione e montaggio in 12 reel).
       </div>
+      <p class="fine">Un giro di revisioni per contenuto. Temi raccolti in una call mensile; materiali e informazioni di base forniti dall'azienda. I mesi si pagano a blocchi, in anticipo.</p>
     </div>
   </div>
 
-  <!-- 04 CAMPAGNE DI ACQUISIZIONE -->
+  <!-- 04 CAMPAGNE -->
   <div class="pkg fade-in">
     <div class="pkg-header" onclick="togglePkg(this)">
       <span class="pkg-num">04.</span>
       <div class="pkg-info">
         <p class="pkg-name">Campagne di acquisizione</p>
-        <p class="pkg-sub">Campagne ads — 3 mesi di gestione inclusi</p>
+        <p class="pkg-sub">Campagne su Meta — costruzione, lancio e gestione mensile</p>
       </div>
-      <span class="pkg-price">€ 3.900–4.900</span>
+      <span class="pkg-price">€ 5.000–8.000</span>
       <span class="chevron"></span>
     </div>
     <div class="pkg-body">
       <p class="pkg-desc">
-        Portare il messaggio definito in strategia alle persone giuste, con campagne su LinkedIn e Meta.
-        L'approccio — diretto o a volume — dipende dal mercato: pochi clienti potenziali ad alto valore,
-        oppure molti a valore medio. Tre mesi di gestione, con un report e un aggiustamento ogni mese,
-        sono inclusi nel prezzo: meno non basta per giudicare una campagna.
+        Portare il messaggio definito in strategia alle persone giuste. Si costruisce e si lancia la campagna,
+        poi la si segue mese per mese, con un report e un aggiustamento ogni mese.
+        Meno di tre mesi non bastano per giudicarla.
       </p>
 
-      <p class="phase">Setup — comune a entrambi gli approcci</p>
+      <p class="phase">Costruzione e lancio · € 4.000</p>
       <div class="items">
         <div class="item"><span class="code">KPI</span><span class="item-text">Definizione degli obiettivi misurabili</span></div>
-        <div class="item"><span class="code">Funnel</span><span class="item-text">Definizione della user journey</span></div>
-        <div class="item"><span class="code">Piattaforme</span><span class="item-text">Setup delle piattaforme e del tracciamento</span></div>
+        <div class="item"><span class="code">Funnel</span><span class="item-text">Definizione del percorso, dall'annuncio al contatto</span></div>
+        <div class="item"><span class="code">Tracciamento</span><span class="item-text">Setup della piattaforma, del pixel e delle conversioni</span></div>
+        <div class="item"><span class="code">Creatività</span><span class="item-text">Copy e visual delle inserzioni</span></div>
+        <div class="item"><span class="code">Lancio</span><span class="item-text">Lancio su Meta (Facebook e Instagram)</span></div>
       </div>
 
-      <p class="phase">Azione — l'approccio si definisce in base al mercato</p>
-      <div class="fork">
-        <div class="branch">
-          <p class="branch-head">→ ABM</p>
-          <p class="branch-when">Pochi clienti potenziali ad alto valore, mercato di nicchia</p>
-          <div class="items">
-            <div class="item"><span class="code">Account</span><span class="item-text">Analisi e selezione dei clienti potenziali da nano-targetizzare</span></div>
-            <div class="item"><span class="code">Messaggi</span><span class="item-text">Outreach personalizzato per account, basato sul bisogno specifico</span></div>
-            <div class="item"><span class="code">Annunci</span><span class="item-text">Annunci mirati sugli account selezionati</span></div>
-            <div class="item"><span class="code">Lancio</span><span class="item-text">Lancio su LinkedIn (+ Meta retargeting)</span></div>
-          </div>
-        </div>
-        <div class="branch">
-          <p class="branch-head">→ Inbound</p>
-          <p class="branch-when">Molti clienti potenziali a valore medio, mercato ampio</p>
-          <div class="items">
-            <div class="item"><span class="code">Magnet</span><span class="item-text">Creazione della risorsa gratuita (lead magnet)</span></div>
-            <div class="item"><span class="code">Landing</span><span class="item-text">Pagina di conversione dedicata + copy</span></div>
-            <div class="item"><span class="code">Nurturing</span><span class="item-text">Sequenza email automatica che coltiva il lead fino alla risposta: <span> da lì subentra il contatto umano</span></span></div>
-            <div class="item"><span class="code">Annunci</span><span class="item-text">Annunci a volume sul pubblico target</span></div>
-            <div class="item"><span class="code">Lancio</span><span class="item-text">Lancio su LinkedIn e Meta</span></div>
-          </div>
-        </div>
-      </div>
-
-      <p class="phase incluso">3 mesi di operatività inclusi</p>
+      <p class="phase incluso">Gestione mensile · € 500 / mese</p>
       <div class="items">
-        <div class="item"><span class="code">Gestione</span><span class="item-text">Gestione e ottimizzazione delle campagne per 3 mesi</span></div>
-        <div class="item"><span class="code">A/B test</span><span class="item-text">Test di creatività e copy, riallocazione del budget in base alle performance</span></div>
-        <div class="item"><span class="code">Report</span><span class="item-text">Report mensile con risultati, raccomandazioni e aggiustamento di budget, creatività e target</span></div>
+        <div class="item"><span class="code">Gestione</span><span class="item-text">Ottimizzazione, test di creatività e copy, riallocazione del budget</span></div>
+        <div class="item"><span class="code">Report</span><span class="item-text">Report mensile con risultati e aggiustamenti</span></div>
+      </div>
+
+      <div class="scale">
+        <div class="scale-row"><span class="scale-price">€ 5.000</span><span class="scale-desc">Lancio + 3 mesi di gestione, al prezzo di 2 <span>(il minimo per valutare)</span></span></div>
+        <div class="scale-row"><span class="scale-price">€ 6.000</span><span class="scale-desc">Lancio + 6 mesi di gestione</span></div>
+        <div class="scale-row ideal"><span class="scale-price">€ 8.000</span><span class="scale-desc">Lancio + 12 mesi di gestione + insight report annuale <span class="badge">Consigliato</span></span></div>
       </div>
 
       <div class="note">
-        Il <b>budget pubblicitario</b> (Meta, LinkedIn) è separato dal compenso e rimane sotto
-        il controllo dell'azienda. Si definisce insieme in base agli obiettivi.
+        Il <b>budget pubblicitario</b> è separato dal compenso e rimane sotto il controllo dell'azienda.
       </div>
+      <p class="fine">Una piattaforma (Meta) e una campagna attiva alla volta. LinkedIn o progetti più grandi: piano su misura. La gestione si paga a blocchi di 3 mesi, in anticipo.</p>
     </div>
   </div>
 
-  <!-- 05 RETAINER -->
+  <!-- 05 CONTINUITÀ CONTENUTI -->
   <div class="pkg fade-in">
     <div class="pkg-header" onclick="togglePkg(this)">
       <span class="pkg-num">05.</span>
       <div class="pkg-info">
-        <p class="pkg-name">Retainer mensile</p>
-        <p class="pkg-sub">Continuità dopo i 3 mesi di campagne — prende il testimone del pacchetto 04</p>
+        <p class="pkg-name">Continuità contenuti</p>
+        <p class="pkg-sub">Dopo il pacchetto 03, la produzione continua — a blocchi di 6 mesi</p>
       </div>
-      <span class="pkg-price">€ 800–1.500 / mese</span>
+      <span class="pkg-price">€ 2.500 / 6 mesi</span>
       <span class="chevron"></span>
     </div>
     <div class="pkg-body">
       <p class="pkg-desc">
-        Per chi, dopo i tre mesi di campagne inclusi nel pacchetto 04, vuole continuità:
-        gestione campagne, visibilità e report su base mensile, più la produzione di contenuti
-        se non la gestite in autonomia.
-        Il volume è definito a contratto — quantità precise, nessuna sorpresa.
+        Lo stesso volume della produzione mensile del pacchetto 03 — piano editoriale, un contenuto a settimana
+        per l'azienda e un post a settimana per il titolare — per chi vuole continuare a delegare.
+        Si acquista solo a blocchi di 6 mesi; il podcast non è incluso.
       </p>
-
-      <p class="phase">Incluso ogni mese — volume da definire</p>
-      <div class="items">
-        <div class="item"><span class="code">Content</span><span class="item-text">Piano, produzione e pubblicazione contenuti <span>(opzionale)</span></span></div>
-        <div class="item"><span class="code">Ads</span><span class="item-text">Ottimizzazione campagne, A/B test, riallocazione budget</span></div>
-        <div class="item"><span class="code">GEO</span><span class="item-text">Audit di visibilità AI (ChatGPT, Perplexity) + raccomandazioni</span></div>
-        <div class="item"><span class="code">Report</span><span class="item-text">Report mensile + call di allineamento</span></div>
-      </div>
-
       <div class="scale">
-        <div class="scale-row"><span class="scale-price">€ 800</span><span class="scale-desc">Gestione ads + GEO + report</span></div>
-        <div class="scale-row"><span class="scale-price">€ 1.100</span><span class="scale-desc">Gestione ads + contenuti del brand + GEO + report</span></div>
-        <div class="scale-row"><span class="scale-price">€ 1.500</span><span class="scale-desc">Gestione ads + contenuti su 2 profili + GEO + report</span></div>
+        <div class="scale-row"><span class="scale-price">€ 2.500</span><span class="scale-desc">6 mesi</span></div>
+        <div class="scale-row"><span class="scale-price">€ 5.000</span><span class="scale-desc">12 mesi</span></div>
       </div>
     </div>
   </div>
